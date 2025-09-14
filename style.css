@@ -1,0 +1,254 @@
+body {
+  margin: 0;
+  padding-top: 70px;
+  font-family: 'Share Tech Mono', monospace;
+  color: #0ff; /* couleur principale (cyan néon) */
+  background: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769')
+              no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Titre */
+.glitch {
+  font-size: 3rem;
+  text-align: center;
+  color: #0ff;
+  text-shadow: 0 0 5px #0ff, 0 0 10px #f0f, 0 0 20px #0ff;
+  animation: flicker 1.5s infinite alternate;
+  margin-top: 2rem;
+} 
+
+/* Curseur titre */
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 1em;
+  vertical-align: text-top;
+  background: #00FF74;
+
+  box-shadow:
+    0 0 5px #00ffcc,
+    0 0 10px #00ffaa,
+    0 0 20px #00ffcc,
+    0 0 40px #00ffaa;
+
+  animation: blink 0.9s infinite;
+  margin-left: 5px;
+}
+
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; text-shadow: 0 0 3px #f0f, 0 0 10px #0ff; }
+  100% { opacity: 1; text-shadow: 0 0 5px #0ff, 0 0 15px #f0f; }
+}
+
+@keyframes blink {
+  0%, 50% {opacity: 1;}
+  51%, 100% {opacity: 0;}
+}
+
+/* Paragraphe */
+.default-text {
+  max-width: 600px;
+  margin: 2rem auto;
+  font-size: 1.2rem;
+  text-align: center;
+  line-height: 1.5;
+  color: #fff;
+  text-shadow: 0 0 3px #0ff;
+}
+
+/* Icônes des réseaux */
+.socials {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.icon {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #0ff;
+  border: 2px solid #0ff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.icon:hover {
+  background: #0ff;
+  color: #000;
+  box-shadow: 0 0 20px #0ff, 0 0 40px #f0f;
+  transform: scale(1.1) rotate(-2deg);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  background: rgba(0, 0, 0, 0.6);
+  color: #0ff;
+}
+
+
+/* --- Barre de navigation --- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  box-shadow: 0 0 10px #0ff, 0 0 20px #f0f;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 0;
+  padding: 1rem;
+}
+
+.navbar a {
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #0ff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 3px #0ff;
+  position: relative;
+  display: inline-block;
+}
+
+/* Hover = changement de couleur flashy */
+.navbar a:hover {
+  color: #00ffbf;
+  text-shadow: 0 0 3px #00ffbf;
+}
+
+/* Click = effet grossissant du texte */
+.navbar a:active {
+  transform: scale(1.2);
+  color: #fff;
+  text-shadow: 0 0 10px #0ff, 0 0 20px #f0f;
+}
+
+/* --- Sections --- */
+
+section {
+  width: 100%;                 /* occupe toute la largeur */
+  padding: 100px 20px;         /* espace intérieur pour le texte */
+  margin: 0;                    /* plus de marges extérieures */
+  color: #fff;
+  text-align: center;
+  line-height: 1.5;
+  backdrop-filter: blur(2px);  /* léger flou pour voir le background */
+}
+
+/* Couleurs alternées */
+
+#portfolio {
+  background: rgba(20, 20, 20, 0.8);   /* gris très foncé semi-transparent */
+}
+
+#formation {
+  background: rgba(10, 10, 10, 0.8);   /* noir très foncé semi-transparent */
+}
+
+#enseeiht {
+  background: rgba(20, 20, 20, 0.8);   /* noir très foncé semi-transparent */
+}
+
+#contact {
+  background: rgba(15, 15, 15, 0.85);  /* noir foncé légèrement différent */
+}
+
+
+.scroll-appear {
+  opacity: 0;
+  transform: translateY(20px); /* juste pour l'animation */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-appear.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Contact form -- */
+
+.contact-form {
+  max-width: 600px;
+  margin: 3rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+/* Champs input et textarea */
+.contact-form input,
+.contact-form textarea {
+  padding: 1rem 1.2rem;
+  border-radius: 12px;
+  border: 2px solid #0ff;
+  background: rgba(20, 20, 20, 0.85);
+  color: #fff;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+  outline: none;
+  box-shadow: 0 0 7px #0ff;
+  transition: all 0.3s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #0ff;
+  opacity: 0.7;
+}
+
+/* Focus */
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #00ffbf;
+  box-shadow: 0 0 15px #00ffbf;
+}
+
+/* Bouton */
+.contact-form button {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 25px;
+  background: #0ff;
+  color: #000;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 15px #0ff, 0 0 25px #00ffbf;
+  transition: all 0.3s ease;
+}
+
+/* Hover bouton */
+.contact-form button:hover {
+  background: #00ffbf;
+  box-shadow: 0 0 25px #00ffbf, 0 0 45px #0ff;
+  transform: scale(1.05);
+}
+
+/* Click bouton */
+.contact-form button:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px #0ff;
+}
