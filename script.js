@@ -1,3 +1,29 @@
+// navbar, footer
+document.addEventListener("DOMContentLoaded", () => {
+  const nav_placeholder = document.getElementById("navbar-placeholder");
+  const footer_placeholder = document.getElementById("footer-placeholder")
+
+  if (nav_placeholder) {
+    fetch("navbar.html")
+      .then(res => res.text())
+      .then(data => {
+        nav_placeholder.innerHTML = data;
+      });
+  }
+
+  if (footer_placeholder) {
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => {
+        footer_placeholder.innerHTML = data;
+      });
+  }
+});
+
+
+// ----------------
+
+// Effets d'apparition au scroll
 const scrollElements = document.querySelectorAll('.scroll-appear');
 
 const elementInView = (el, offset = 0) => {
@@ -25,6 +51,7 @@ window.addEventListener('load', handleScrollAnimation);
 
 // -----------------
 
+// Animation machine à écrire
 document.addEventListener("DOMContentLoaded", () => {
   const title = document.getElementById("typedText");
   const fullText = title.getAttribute("data-text") || "Welcome to my Portfolio ⚡";
