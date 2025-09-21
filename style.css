@@ -159,20 +159,12 @@ section {
 
 /* Couleurs alternées */
 
-#portfolio {
-  background: rgba(20, 20, 20, 0.8);   /* gris très foncé semi-transparent */
-}
-
-#formation {
+.section-odd {
   background: rgba(10, 10, 10, 0.8);   /* noir très foncé semi-transparent */
 }
 
-#enseeiht {
+.section-even {
   background: rgba(20, 20, 20, 0.8);   /* noir très foncé semi-transparent */
-}
-
-#contact {
-  background: rgba(15, 15, 15, 0.85);  /* noir foncé légèrement différent */
 }
 
 

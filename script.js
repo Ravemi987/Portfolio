@@ -27,7 +27,7 @@ window.addEventListener('load', handleScrollAnimation);
 
 document.addEventListener("DOMContentLoaded", () => {
   const title = document.getElementById("typedText");
-  const fullText = "Bienvenue dans mon univers ⚡";
+  const fullText = title.getAttribute("data-text") || "Welcome to my Portfolio ⚡";
   let i = 0;
   let typingInterval;
 
