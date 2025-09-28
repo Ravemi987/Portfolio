@@ -64,9 +64,10 @@ body {
   text-shadow: 0 0 3px #0ff;
 }
 
-h1 {
+h1, h2 {
   max-width: 800px;
   margin: 2rem auto;
+  margin-bottom: 4rem;
   text-align: center;
   line-height: 1.5;
   color: #fff;
@@ -85,7 +86,7 @@ h1 {
   text-decoration: none;
   font-size: 1.2rem;
   color: #0ff;
-  border: 2px solid #0ff;
+  border: 2px solid #00ffbf;
   padding: 0.5rem 1rem;
   border-radius: 8px;
   transition: all 0.3s ease;
@@ -319,23 +320,76 @@ section {
 /* --- courses.html --- */
 
 .course-list {
-  list-style: none; /* supprime les puces par défaut */
+  max-width: 900px;
+  margin: 2rem auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #fff;
+  text-align: left;
+  text-shadow: 0 0 3px #0ff;
+}
+
+.course-list h3 {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.course-list.green-list h3 {
+  color: #00FF74;
+  text-shadow: 0 0 5px #00FF74, 0 0 10px #00ffaa;
+}
+
+.course-list.blue-list h3 {
+  color: #00ffbf;
+  text-shadow: 0 0 5px #00ffbf, 0 0 10px #0ff;
+}
+
+.course-list ul {
+  list-style: none;
+  margin: 0 0 1rem 0;
   padding: 0;
 }
 
 .course-list li {
-  position: relative;
-  padding-left: 1.5em; /* espace pour le chevron */
-  margin-bottom: 0.4em;
+  margin: 0.3rem 0;
+  display: flex;
+  align-items: flex-start;
 }
 
-.course-list li::before {
-  content: ">";
-  position: absolute;
-  left: 0;
-  color: #00ffcc; /* couleur cyberpunk */
+.course-list .chevron {
   font-weight: bold;
-  text-shadow: 0 0 8px #00ffcc; /* effet glowing */
+  margin-right: 8px;
+}
+
+.course-list.green-list .chevron {
+  color: #00FF74;
+  text-shadow: 0 0 5px #00FF74, 0 0 10px #00ffaa;
+}
+
+.course-list.blue-list .chevron {
+  color: #00ffbf;
+  text-shadow: 0 0 5px #00ffbf, 0 0 10px #0ff;
+}
+
+.source-link {
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.source-link a {
+  color: #00FF74;
+  text-decoration: none;
+  text-shadow: 0 0 5px #00FF74, 0 0 10px #00ffaa;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  margin-left: 55%;
+}
+
+.source-link a:hover {
+  color: #00ffbf;
+  text-shadow: 0 0 8px #00ffbf, 0 0 15px #0ff;
 }
 
 
