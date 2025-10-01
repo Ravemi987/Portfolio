@@ -47,7 +47,7 @@
   </section>
 
 
-  <section class="section-odd">
+  <section class="section-odd first-section">
     <h2 class="scroll-appear">Bachelor's Degree courses content</h2>
 
     <div class="course-list green-list scroll-appear">
@@ -114,12 +114,132 @@
         <li><span class="chevron">&gt;</span> Soft and Human Skills</li>
       </ul>
     </div>
+  </section>
 
-    <span class="source-link scroll-appear">
-      <a href="https://www.enseeiht.fr/fr/formation/formation-ingenieur/departement-sn/programme-sn/programme-2a-sn.html" target="_blank">
-        Source: ENSEEIHT - Engineering Degree in Computer Science and Telecommunications
-      </a>
-    </span>
+  <section class="section-odd">
+    <h1 class="scroll-appear">Projects</h1>
+
+    <div id="projectContent">
+
+      <div id="projectContent-top">
+        <div class="flashcard-div scroll-appear" style="--bg-image: url('img/chess-bg.jpg');">
+          <div class="flashcard-logo">
+            <i class="fas fa-chess-pawn flashcard-icon"></i>
+          </div>
+          <h2>Chess</h2>
+          <div class="flashcard-text">
+            <p>Chess Engine in Java.</p>
+            <p>Implements move generation and rules using Magic Bitboards and Zobrist Hashing.</p>
+            <p>Includes CLI and GUI version compatibles with UCI protocol.</p>
+            <p>An effort has been made towards reaching optimal time and memory complexity (branchless instructions, bitwise operations),
+              allowing the application to compete with average C++ equivalent projects.
+            </p>
+          </div>
+          <div class="flashcard-tags-div">
+            <span class="flashcard-tag tag-java">Java</span>
+            <span class="flashcard-tag tag-javafx">JavaFX</span>
+          </div>
+        </div>
+
+        <div class="flashcard-div scroll-appear" style="--bg-image: url('img/cyber-bg.jpg');">
+          <div class="flashcard-logo">
+            <i class="fa-solid fa-lock flashcard-icon"></i>
+          </div>
+          <h2>Cryptography</h2>
+          <div class="flashcard-text">
+            <p>Cryptography software in C.</p>
+            <p>
+              Development of a cybersecurity offensive command-line application in team,
+              allowing to crack secret encryption keys using dictionnary smart attacks, one-time pad vulnerabilities as well as frequency analysis.
+            </p>
+            <p>Includes various personalised and optimised data structures, exhaustive tests in shell and python.</p>
+          </div>
+          <div class="flashcard-tags-div">
+            <span class="flashcard-tag tag-c">C</span>
+            <span class="flashcard-tag tag-python">Python</span>
+            <span class="flashcard-tag tag-shell">Shell</span>
+          </div>
+        </div>
+
+        <div class="flashcard-div scroll-appear" style="--bg-image: url('img/neurals-bg.jpg');">
+          <div class="flashcard-logo">
+            <i class="fa-solid fa-brain flashcard-icon"></i>
+          </div>
+          <h2>Deep Learning</h2>
+          <div class="flashcard-text">
+            <p>Neural Network in Java.</p>
+            <p>Development of a multi-layers and fully connected neural network from scratch, trained to learn numbers from the MNIST dataset.</p>
+            <p>Supports multiples activation functions.</p>
+            <p>Implements an optimizer and the batch gradient descent.</p>
+            <p>Is highly modulable and can be ported to C / CUDA.</p>
+          </div>
+          <div class="flashcard-tags-div">
+            <span class="flashcard-tag tag-java">Java</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div id="projectContent-bottom">
+        
+        <div class="flashcard-div scroll-appear" style="--bg-image: url('img/robot-bg.jpg');">
+          <div class="flashcard-logo">
+            <i class="fa-solid fa-robot flashcard-icon"></i>
+          </div>
+          <h2>Reinforcment Learning</h2>
+          <div class="flashcard-text">
+            <p>Dashboard application in R</p>
+            <p>Conception of a web-style heavy client in R for my bachelor's internship at IRIT,
+              in collaboration with the CBI (Center in Integrative Biology).
+            </p>
+            <p>Study and implementation of many RL algorithms (Ucb, LinUcb, Epsilon Greedy, Q-Learning, ...) 
+              for the study of bees' behavior and their learning capacities.
+            </p>
+            <p>The application also gives an analysis through multiples charts, graphics, tables, leaderboards.</p>
+          </div>
+          <div class="flashcard-tags-div">
+            <span class="flashcard-tag tag-r">R</span>
+            <span class="flashcard-tag tag-css">CSS</span>
+          </div>
+        </div>
+
+        <div class="flashcard-div scroll-appear" style="--bg-image: url('img/processor-bg.jpg');">
+          <div class="flashcard-logo">
+            <i class="fa-solid fa-microchip flashcard-icon"></i>
+          </div>
+          <h2>Processor Conception</h2>
+          <div class="flashcard-text">
+            <p>Conception of a fonctional processor for ARMv7 (32 bits)</p>
+            <p>Wiring in Logisim. Implementation of every component and mecanism from scratch:</p>
+            <p>UAL - Register file - Instrcution Decoder and management of NZCV flags, memory, program counter.</p>
+            <p>Correct execution of basic instructions (MOV, ADD, SUB, LOAD, STORE, ...)</p>
+            <p>I am currently developing back this processor in VHDL for embedded systems (FPGA)</p>
+          </div>
+          <div class="flashcard-tags-div">
+            <span class="flashcard-tag tag-other">Logisim</span>
+          </div>
+        </div>
+
+        <div class="flashcard-div scroll-appear" style="--bg-image: url('img/hackaton-bg.jpg');">
+          <div class="flashcard-logo">
+            <i class="fa-solid fa-database flashcard-icon"></i>
+          </div>
+          <h2>Machine Learning</h2>
+          <div class="flashcard-text">
+            <p>Hackaton on football match previsions in Python.</p>
+            <p>Pre-processing and analysis of a large amount of real data given for the event.</p>
+            <p>Development of several ML models - Random Forests, Classification and Decision Trees, 
+              Clustering (K-Means, HCA), Neural Networks, Vote System.</p>
+            <p>I finished first of my promotion and had a good world ranking.</p>
+          </div>
+          <div class="flashcard-tags-div">
+            <span class="flashcard-tag tag-java">Python</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
   </section>
 
 
