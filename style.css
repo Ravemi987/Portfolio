@@ -209,28 +209,28 @@ section {
 .section-odd {
   background: linear-gradient(
     to bottom,
-    rgba(20, 20, 20, 0.65) 0%,      /* haut clair */
-    rgba(15, 15, 15, 0.7) 90%,      /* corps */
-    rgba(15, 15, 15, 0.6) 100%      /* bas éclairci pour préparer la suite */
+    rgba(20, 20, 20, 0.65) 0%,      
+    rgba(15, 15, 15, 0.7) 90%,      
+    rgba(15, 15, 15, 0.6) 100%      
   );
 }
 
 .section-even {
   background: linear-gradient(
     to bottom,
-    rgba(12, 12, 12, 0.6) 0%,       /* haut clair (match bas de odd) */
-    rgba(10, 10, 10, 0.65) 90%,      /* corps */
-    rgba(20, 20, 20, 0.65) 100%     /* bas éclairci pour préparer la suite */
+    rgba(12, 12, 12, 0.6) 0%,      
+    rgba(10, 10, 10, 0.65) 90%,      
+    rgba(20, 20, 20, 0.65) 100%     
   );
 }
 
 .section-odd.first-section {
   background: linear-gradient(
     to bottom,
-    rgba(20, 20, 20, 0) 5%,   /* léger assombrissement pour fondre avec le bg global */
+    rgba(20, 20, 20, 0) 5%,
     rgba(15, 15, 15, 0.65) 10%, 
     rgb(10, 10, 10, 0.7) 90%, 
-    rgba(15, 15, 15, 0.6) 100%
+    rgba(10, 10, 10, 0.6) 100%
   );
 }
 
@@ -704,6 +704,76 @@ section {
     text-align: left;
     max-width: 90%;
   }
+}
+
+
+/* --- activities.html --- */
+
+.activities-section {
+  position: relative;
+  width: 100%;
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;         /* centre le titre verticalement */
+  text-align: center;
+  font-family: 'Share Tech Mono', monospace;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: var(--bg-image);
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.activities-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+  z-index: -1;
+}
+
+.activities-section::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  pointer-events: none;
+}
+
+#trumpet {
+  --bg-image: url(img/trumpet.jpg);
+}
+
+#drums {
+  --bg-image: url(/img/drums.jpg);
+}
+
+#piano {
+  --bg-image: url(/img/piano.jpg);
+}
+
+#football {
+  --bg-image: url(/img/football.jpg);
+}
+
+#table-tennis {
+  --bg-image: url(/img/table_tennis.jpg);
+}
+
+#programming {
+  --bg-image: url(/img/programming.jpg);
+}
+
+#video-games {
+  --bg-image: url(/img/video_games.jpg);
 }
 
 
