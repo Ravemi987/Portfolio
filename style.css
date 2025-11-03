@@ -3,8 +3,7 @@ body {
   padding-top: 70px;
   font-family: 'Share Tech Mono', monospace;
   color: #0ff; /* couleur principale (cyan néon) */
-  background: url('https://images.unsplash.com/photo-1535223289827-42f1e9919769')
-              no-repeat center center fixed;
+  background: black;
   background-size: cover;
   background-attachment: fixed;
   min-height: 100vh;
@@ -753,27 +752,27 @@ section {
 }
 
 #drums {
-  --bg-image: url(/img/drums.jpg);
+  --bg-image: url(img/drums.jpg);
 }
 
 #piano {
-  --bg-image: url(/img/piano.jpg);
+  --bg-image: url(img/piano.jpg);
 }
 
 #football {
-  --bg-image: url(/img/football.jpg);
+  --bg-image: url(img/football.jpg);
 }
 
 #table-tennis {
-  --bg-image: url(/img/table_tennis.jpg);
+  --bg-image: url(img/table_tennis.jpg);
 }
 
 #programming {
-  --bg-image: url(/img/programming.jpg);
+  --bg-image: url(img/programming.jpg);
 }
 
 #video-games {
-  --bg-image: url(/img/video_games.jpg);
+  --bg-image: url(img/video_games.jpg);
 }
 
 
