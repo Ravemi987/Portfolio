@@ -3,7 +3,7 @@ body {
   padding-top: 70px;
   font-family: 'Share Tech Mono', monospace;
   color: #0ff; /* couleur principale (cyan néon) */
-  background: black;
+  background: #1a191d;
   background-size: cover;
   background-attachment: fixed;
   min-height: 100vh;
@@ -12,37 +12,23 @@ body {
   justify-content: space-between;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    rgba(0,0,0,0.3), 
-    rgba(0,0,0,0.5)
-  );
-  z-index: -1;
-}
+
 
 /* Titre */
 .glitch {
   font-size: 3rem;
   text-align: center;
-  color: #0ff;
-  text-shadow: 0 0 5px #0ff, 0 0 10px #f0f, 0 0 20px #0ff;
-  animation: flicker 1.5s infinite alternate;
-  margin-top: 2rem;
+  color: white;
+  margin-top: 5rem;
 } 
 
 /* Curseur titre */
 .cursor {
   display: inline-block;
-  width: 8px;
+  width: 6px;
   height: 1em;
   vertical-align: text-top;
-  background: #00FF74;
+  background: white;
 
   box-shadow:
     0 0 5px #00ffcc,
@@ -74,7 +60,6 @@ body::before {
   text-align: center;
   line-height: 1.5;
   color: #fff;
-  text-shadow: 0 0 3px #0ff;
 }
 
 h1, h2 {
@@ -84,7 +69,6 @@ h1, h2 {
   text-align: center;
   line-height: 1.5;
   color: #fff;
-  text-shadow: 0 0 3px #0ff;
 }
 
 /* Icônes des réseaux */
@@ -117,7 +101,7 @@ footer {
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
-  background: rgba(0, 0, 0, 0.6);
+  background-color: #0e0e0e;
   color: #0ff;
 }
 
@@ -129,10 +113,8 @@ footer {
   top: 0;
   left: 0;
   width: 100%;
-  background: rgba(20, 20, 20, 0.6);
   backdrop-filter: blur(4px);
   z-index: 1000;
-  box-shadow: 0 0 10px #0ff, 0 0 20px #f0f;
 }
 
 .navbar ul {
@@ -203,36 +185,6 @@ section {
   backdrop-filter: blur(2px);
 }
 
-/* Couleurs alternées */
-
-.section-odd {
-  background: linear-gradient(
-    to bottom,
-    rgba(20, 20, 20, 0.65) 0%,      
-    rgba(15, 15, 15, 0.7) 90%,      
-    rgba(15, 15, 15, 0.6) 100%      
-  );
-}
-
-.section-even {
-  background: linear-gradient(
-    to bottom,
-    rgba(12, 12, 12, 0.6) 0%,      
-    rgba(10, 10, 10, 0.65) 90%,      
-    rgba(20, 20, 20, 0.65) 100%     
-  );
-}
-
-.section-odd.first-section {
-  background: linear-gradient(
-    to bottom,
-    rgba(20, 20, 20, 0) 5%,
-    rgba(15, 15, 15, 0.65) 10%, 
-    rgb(10, 10, 10, 0.7) 90%, 
-    rgba(10, 10, 10, 0.6) 100%
-  );
-}
-
 
 .scroll-appear {
   opacity: 0;
@@ -260,7 +212,7 @@ section {
   border: 3px solid #00ffbf;
   border-radius: 8px;
   padding: 1rem;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.202);
   box-shadow: 0 0 3px #00ffbf;
 }
 
@@ -456,7 +408,6 @@ section {
   padding: 2rem 1rem;
   margin: 1rem;
   overflow: hidden;
-  background: rgba(0,0,0,0.5);
   box-shadow: 0 0 15px rgba(0,255,255,0.4);
   transition: all 0.4s ease;
   display: flex;
@@ -638,7 +589,6 @@ section {
   line-height: 1.6;
   font-size: 1.2rem;
   color: #fff;
-  text-shadow: 0 0 3px #0ff;
   max-width: 700px;
 }
 

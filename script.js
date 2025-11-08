@@ -54,7 +54,7 @@ window.addEventListener('load', handleScrollAnimation);
 // Animation machine à écrire
 document.addEventListener("DOMContentLoaded", () => {
   const title = document.getElementById("typedText");
-  const fullText = title.getAttribute("data-text") || "Welcome to my Portfolio ⚡";
+  const fullText = title.getAttribute("data-text") || "Welcome to my Portfolio ";
   let i = 0;
   let typingInterval;
 
