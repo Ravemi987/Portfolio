@@ -12,59 +12,79 @@
   <!-- Google Fonts (police style informatique/cyber) -->
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link rel="preload" as="image" href="img/trumpet.jpg">
+  <link rel="preload" as="image" href="img/drums.jpg">
+  <link rel="preload" as="image" href="img/piano.jpg">
+  <link rel="preload" as="image" href="img/football.jpg">
+  <link rel="preload" as="image" href="img/table_tennis.jpg">
 </head>
 
 <body>
 
-  <div id="navbar-placeholder"></div>
-
-  <header>
-    <h1 class="glitch">
-      <span id="typedText" data-text="Sports & Activities "></span>
-      <span class="cursor"></span>
-    </h1>
-  </header>
+  <canvas id="particle-canvas"></canvas>
+  <div id="background-glow" class="background-glow"></div>
 
 
-  <section id="presentation">
-    <div class="socials">
-      <a href="https://github.com/Ravemi987" target="_blank" class="icon">
-        <i class="fa-brands fa-github"></i> Github
-      </a>
-      <a href="https://www.linkedin.com/in/r%C3%A9mi-airiau-6a222a256/" target="_blank" class="icon">
-        <i class="fa-brands fa-linkedin"></i> Linkedin
-      </a>
-      <a href="https://discord.com/users/329288791091052544" target="_blank" class="icon">
-        <i class="fa-brands fa-discord"></i> Discord
-      </a>
-    </div>
-  </section>
+  <div class="page-wrapper">
+    <div id="navbar-placeholder"></div>
 
-  <section class="activities-section" id="trumpet">
-    <h1 class="scroll-appear"> Trumpet </h1>
-  </section>
+    <main>
 
-  <section class="activities-section" id="drums">
-    <h1 class="scroll-appear"> Drums </h1>
-  </section>
-
-  <section class="activities-section" id="piano">
-    <h1 class="scroll-appear"> Piano </h1>
-  </section>
-
-  <section class="activities-section" id="football">
-    <h1 class="scroll-appear"> Football </h1>
-  </section>
-
-  <section class="activities-section" id="table-tennis">
-    <h1 class="scroll-appear"> Table Tennis </h1>
-  </section>
+      <header>
+        <h1 class="glitch">
+          <span id="typedText" data-text="Sports & Activities "></span>
+          <span class="cursor"></span>
+        </h1>
+      </header>
 
 
-  <div id="footer-placeholder"></div>
+      <section id="presentation">
+        <div class="socials">
+          <a href="https://github.com/Ravemi987" target="_blank" class="icon">
+            <i class="fa-brands fa-github"></i> Github
+          </a>
+          <a href="https://www.linkedin.com/in/r%C3%A9mi-airiau-6a222a256/" target="_blank" class="icon">
+            <i class="fa-brands fa-linkedin"></i> Linkedin
+          </a>
+          <a href="https://discord.com/users/329288791091052544" target="_blank" class="icon">
+            <i class="fa-brands fa-discord"></i> Discord
+          </a>
+        </div>
+      </section>
 
-  <!-- Lien JS -->
+      <section class="activities-section-wrapper">
+
+        <section class="activities-section" id="trumpet">
+          <h1 class="scroll-appear"> Trumpet </h1>
+        </section>
+
+        <section class="activities-section" id="drums">
+          <h1 class="scroll-appear"> Drums </h1>
+        </section>
+
+        <section class="activities-section" id="piano">
+          <h1 class="scroll-appear"> Piano </h1>
+        </section>
+
+        <section class="activities-section" id="football">
+          <h1 class="scroll-appear"> Football </h1>
+        </section>
+
+        <section class="activities-section" id="table-tennis">
+          <h1 class="scroll-appear"> Table Tennis </h1>
+        </section>
+
+      </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+  </div>
+
+  <script src="particles.js"></script>
   <script src="script.js"></script>
+
 </body>
 
 </html>

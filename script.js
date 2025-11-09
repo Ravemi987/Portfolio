@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .then(res => res.text())
       .then(data => {
         nav_placeholder.innerHTML = data;
+        initNavbarFeatures();
       });
   }
 
@@ -19,6 +20,20 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 });
+
+
+function initNavbarFeatures() {
+  const burger = document.querySelector(".burger");
+  const navLinks = document.querySelector(".nav-links");
+
+  if (burger && navLinks) {
+    burger.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("active");
+      burger.classList.toggle("is-open", open);
+      document.body.classList.toggle('open');
+    });
+  }
+}
 
 
 // ----------------
@@ -93,4 +108,43 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   startTyping();
+});
+
+
+// Copie dans le presse-papiers
+
+let canClick = true;
+const clickCooldown = 2000; // 2 secondes de cooldown entre les clics
+const copyButton = document.getElementById("copyButton");
+
+copyButton.addEventListener("click", async () => {
+  if (!canClick) return;
+
+  canClick = false;
+
+  const textToCopy = copyButton.dataset.copyText;
+
+  try {
+    await navigator.clipboard.writeText(textToCopy);
+
+    // sauvegarder l'état original
+    const originalHTML = copyButton.innerHTML;
+
+    // mettre l'état “copié”
+    copyButton.innerHTML = `
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M7.5 13.5L4 10L5.5 8.5L7.5 10.5L14.5 3.5L16 5L7.5 13.5Z"/>
+      </svg>
+      Copié
+    `;
+
+    // revenir à l'état original après 2 secondes
+    setTimeout(() => {
+      copyButton.innerHTML = originalHTML;
+      canClick = true;
+    }, clickCooldown);
+
+  } catch (err) {
+    console.error("Erreur lors de la copie: ", err);
+  }
 });
