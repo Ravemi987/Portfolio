@@ -4,6 +4,11 @@
   --light-color: #fff;
 }
 
+/* --- AJOUT CRITIQUE POUR FIXER L'OVERFLOW --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html, body {
   overflow-x: hidden;
 }
@@ -52,10 +57,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  width: 100%; /* Sécurité */
 }
 
 main {
   flex: 1;
+  width: 100%; /* Sécurité */
 }
 
 
@@ -111,6 +118,7 @@ main {
   text-align: center;
   line-height: 1.5;
   color: var(--text-color);
+  margin: 0 auto; /* Centrage safe */
 }
 
 h1, h2, p {
@@ -144,6 +152,7 @@ h1, h2 {
   border-radius: 8px;
   transition: all 0.3s ease;
   width: 10rem;
+  text-align: center; /* Ajout pour centrer le texte dans le bouton */
 }
 
 .icon:hover {
@@ -166,15 +175,16 @@ h1, h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.0rem 1rem;
-  border-radius: 0%;
+  padding: 0 2rem; /* Simplifié pour éviter l'overflow */
+  height: 70px; /* Hauteur fixe pour stabiliser le layout */
 }
 
 .brand-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 30%;
+  /* width: 30%; Suppression de la largeur fixe qui casse le responsive */
+  z-index: 1002; /* Doit être au-dessus du menu mobile */
 }
 
 .brand {
@@ -205,7 +215,7 @@ h1, h2 {
   justify-content: flex-end;
   gap: 1rem;
   margin: 0;
-  padding: 1rem;
+  padding: 0;
 }
 
 .nav-links li a {
@@ -222,7 +232,6 @@ h1, h2 {
 
 .nav-links li a:hover {
   color: #0ff;
-  /* text-shadow: 0 0 2px #0ff, 0 0 5px #00ffbf; */
 }
 
 .nav-links li a::after {
@@ -244,6 +253,7 @@ h1, h2 {
 
 .burger {
   display: none;
+  z-index: 1002; /* Au-dessus du menu déroulant */
 }
 
 /* --- Sections --- */
@@ -253,7 +263,7 @@ section {
   display: flex;
   flex-direction: column;     
   align-items: center;
-  padding: 3rem;       
+  padding: 3rem 1rem; /* Padding horizontal réduit pour mobile */   
   margin: 0;                   
   color: var(--light-color);
   text-align: center;
@@ -263,7 +273,7 @@ section {
 
 .scroll-appear {
   opacity: 0;
-  transform: translateY(20px); /* juste pour l'animation */
+  transform: translateY(20px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
@@ -272,102 +282,114 @@ section {
   transform: translateY(0);
 }
 
-/* --- index.html --- */
+/* --- index.html (Formation) --- */
 
 #formationContent {
-  min-height: 1000px;
   position: relative;
   max-width: 1240px;
   width: 100%;
-  margin: 100px auto 50px auto;
+  margin: 100px auto 100px auto;
+  padding: 20px 0;
 }
 
+/* La ligne centrale */
+.timeline {
+  position: absolute;
+  width: 4px;
+  background: #00ffaa;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  box-shadow: 0 0 15px #00ffaa;
+  opacity: 1; /* Opacité remontée pour la visibilité */
+}
+
+/* Styles communs des boîtes */
 .formation-div {
-  width: 35%;
+  position: relative;
+  width: 45%; /* Largeur fixe pour calculer le centre facilement */
+  margin-bottom: 4rem; /* Espace vertical entre les events */
+  padding: 1.5rem;
+  /* On garde ton style existant */
   border: 3px solid #00ffbf;
   border-radius: 8px;
-  padding: 1rem;
   box-shadow: 0 0 10px #00ffbf;
 }
 
-#formationContent .formation-div span {
-  margin-bottom: 10px;
-  width: 80%;
-}
+/* --- LOGIQUE DROITE / GAUCHE --- */
 
-.formation-spacer {
-  border-bottom: 2px #00ff74 solid;
-  margin: auto;
-  display: block;
-  width: 80%;
-  box-shadow: 0 0 5px #00FF74, 0 0 10px #00ffcc;
-}
-
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-.timeline{
-  position: absolute;
-  height: 100%;
-  width: 10px;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #00ffaa;
-  /* box-shadow: 0 0 10px #00ffaa; */
-  opacity: 0.7;
-  border-radius: 20px;
-}
-
+/* Éléments pairs (A Droite) */
 #formationContent .formation-div:nth-child(even) {
-  margin-left: 25%;
+  margin-left: 55%; /* 50% (milieu) + 5% (demi-marge) */
 }
 
-
+/* Éléments impairs (A Gauche) */
 #formationContent .formation-div:nth-child(odd) {
-  margin-left: 75%;
+  margin-left: 0;
+  margin-right: 55%; /* Force l'élément à gauche */
 }
 
 
-#formationContent .formation-div {
-  transform: translateX(-50%);
-}
+/* --- LES POINTS (CERCIERS) --- */
 
-
-#formationContent .formation-div:nth-child(even)::before, 
-.formation-div:nth-child(even) .formation-date {
-  transform: translate(50%, -50%);
-  right: -22.5%;
-}
-
-
-#formationContent .formation-div:nth-child(odd)::before,
-.formation-div:nth-child(odd) .formation-date {
-  transform: translate(-50%, -50%);
-  left: -22%;
-}
-
-
-#formationContent .formation-div::before {
+/* Style du point */
+.formation-div::before {
   content: "";
   position: absolute;
-  height: 31px;
-  width: 31px;
+  width: 24px;
+  height: 24px;
+  background-color: #1e1c27; /* Fond sombre pour cacher la ligne derrière */
+  border: 4px solid #00ffbf;
   border-radius: 50%;
-  background-color: #0ff;
-  top: 50%;
-  border: solid 2px #0ff;
-  /* box-shadow: 0 0 5px #0ff, 0 0 10px #00ffbf; */
-  opacity: 1;
+  top: 25px; /* Aligné avec le début du texte */
+  z-index: 10;
+  box-shadow: 0 0 10px #00ffbf, inset 0 0 5px #00ffbf;
+  transition: transform 0.3s ease;
+}
+
+/* Position du point pour la boite de DROITE -> Doit être à sa gauche */
+#formationContent .formation-div:nth-child(even)::before {
+  left: -11.5%; /* Calcul mathématique : 5% (espace) / 45% (largeur) = 11.11% */
+  transform: translateX(-50%);
+}
+
+/* Position du point pour la boite de GAUCHE -> Doit être à sa droite */
+#formationContent .formation-div:nth-child(odd)::before {
+  right: -11.5%;
+  transform: translateX(50%);
+  left: auto; /* Reset pour éviter les conflits */
 }
 
 
-#formationContent .formation-date {
+/* --- LES DATES (OPPOSÉES) --- */
+
+.formation-date {
   position: absolute;
-  top: 60%;
-  font-size: bold;
-  font-style: italic;
+  top: 25px; /* Aligné avec le point */
+  width: 200px;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #00ffbf;
+  text-shadow: 0 0 5px #00ffbf;
+  padding: 0;
+  margin: 0;
+}
+
+/* Date pour boite de DROITE -> Doit s'afficher à GAUCHE */
+#formationContent .formation-div:nth-child(even) .formation-date {
+  left: -60%; /* Pousse le texte de l'autre côté de la timeline */
+  text-align: right;
+  transform: none; /* Annule le centrage précédent */
+}
+
+/* Date pour boite de GAUCHE -> Doit s'afficher à DROITE */
+#formationContent .formation-div:nth-child(odd) .formation-date {
+  right: -60%; /* Pousse le texte de l'autre côté de la timeline */
+  text-align: left;
+  transform: none;
 }
 
 /* --- courses.html --- */
@@ -383,6 +405,7 @@ section {
   color: var(--light-color);
   text-align: left;
   padding: 3rem;
+  width: 100%; /* Sécurité */
 }
 
 .course-list h3 {
@@ -393,12 +416,10 @@ section {
 
 .course-list.green-list h3 {
   color: #75f7af;
-  /* text-shadow: 0 0 5px #75f7af, 0 0 10px #00ffaa; */
 }
 
 .course-list.blue-list h3 {
   color: #00ffbf;
-  /* text-shadow: 0 0 5px #00ffbf, 0 0 10px #0ff; */
 }
 
 .course-list ul {
@@ -439,24 +460,29 @@ section {
   margin: 30px auto 30px auto;
 }
 
+/* Modification ici pour utiliser Flexbox proprement (comme un grid) */
 #projectContent-top, #projectContent-bottom {
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
+  gap: 2rem; /* Remplace les margins aléatoires */
+  width: 100%;
+  margin-bottom: 2rem;
 }
 
 /* --- Flashcard --- */
 .flashcard-div {
-  /* background-color: var(--background-color); */
   position: relative;
-  width: 30%;
+  /* width: 30%; On retire la largeur fixe rigide */
+  width: 350px; /* Largeur de base */
+  max-width: 100%; /* Responsive */
+  flex-grow: 1; /* Permet de remplir l'espace si besoin */
+  
   min-height: 500px;
-  /* border: 3px solid #0ff; */
   padding: 2rem 1rem;
-  margin: 1rem;
+  margin: 0; /* Géré par le gap du parent */
   overflow: hidden;
-  /* box-shadow: 0 0 15px rgba(0,255,255,0.4); */
   transition: all 0.4s ease;
   display: flex;
   flex-direction: column;
@@ -476,29 +502,12 @@ section {
   background-position: center;
 }
 
-.cyber::before {
-  background-image: url('img/cyber-bg.jpg');
-}
-
-.chess::before {
-  background-image: url('img/chess-bg.jpg');
-}
-
-.neurals::before {
-  background-image: url('img/neurals-bg.jpg');
-}
-
-.robot::before {
-  background-image: url('img/robot-bg.jpg');
-}
-
-.proc::before {
-  background-image: url('img/processor-bg.jpg');
-}
-
-.hackaton::before {
-  background-image: url('img/hackaton-bg.jpg');
-}
+.cyber::before { background-image: url('img/cyber-bg.jpg'); }
+.chess::before { background-image: url('img/chess-bg.jpg'); }
+.neurals::before { background-image: url('img/neurals-bg.jpg'); }
+.robot::before { background-image: url('img/robot-bg.jpg'); }
+.proc::before { background-image: url('img/processor-bg.jpg'); }
+.hackaton::before { background-image: url('img/hackaton-bg.jpg'); }
 
 .flashcard-div:hover::before {
   opacity: 0.15;
@@ -583,6 +592,7 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  justify-content: center;
   z-index: 1;
 }
 
@@ -591,53 +601,19 @@ section {
   border-radius: 12px;
   font-size: 0.8rem;
   font-weight: bold;
-  margin: 15px 0px 15px px;
+  margin: 5px; /* Ajusté */
 }
 
 /* Tags custom colors */
-.tag-java {
-  background: #2de057;
-  box-shadow: 0 0 15px #15b85f;
-}
+.tag-java { background: #2de057; box-shadow: 0 0 15px #15b85f; }
+.tag-javafx { background: #f125e7; box-shadow: 0 0 15px #ab1bb8; }
+.tag-c { background: #23e6a2; box-shadow: 0 0 15px #1bb8a1; }
+.tag-python { background: #facb56; box-shadow: 0 0 15px #ad9f1b; }
+.tag-shell { background: #ef5757; box-shadow: 0 0 15px #b81b1b; }
+.tag-r { background: #7dd5e9; box-shadow: 0 0 15px #46ebf4; }
+.tag-css { background: #2b4bca; box-shadow: 0 0 15px #3959db; }
+.tag-other { background: #d22f75; box-shadow: 0 0 15px #e31b7f; }
 
-.tag-javafx {
-  background: #f125e7;
-  box-shadow: 0 0 15px #ab1bb8;
-}
-
-.tag-c {
-  background: #23e6a2;
-  box-shadow: 0 0 15px #1bb8a1;
-}
-
-.tag-python {
-  background: #facb56;
-  box-shadow: 0 0 15px #ad9f1b;
-}
-
-.tag-shell {
-  background: #ef5757;
-  box-shadow: 0 0 15px #b81b1b;
-}
-
-.tag-r
- {
-  background: #7dd5e9;
-  box-shadow: 0 0 15px #46ebf4;
- }
- 
-.tag-css {
-  background: #2b4bca;
-  box-shadow: 0 0 15px #3959db;
-}
-
-.tag-other {
-  background: #d22f75;
-  box-shadow: 0 0 15px #e31b7f;
-}
-
-
-/* -- civic.html --- */
 
 /* --- activities.html --- */
 
@@ -654,7 +630,7 @@ section {
   min-height: 900px;
   display: flex;
   justify-content: center;
-  align-items: center;         /* centre le titre verticalement */
+  align-items: center;         
   text-align: center;
   font-family: 'Share Tech Mono', monospace;
   overflow: hidden;
@@ -670,12 +646,12 @@ section {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    var(--background-color) 0%,       /* foncé en haut */
-    rgba(26, 25, 29, 0.85) 10%,       /* encore un peu sombre */
-    rgba(26, 25, 29, 0.85) 30%,          /* devient transparent plus loin */
-    rgba(26, 25, 29, 0.85) 70%,          /* transparent au centre */
-    rgba(26, 25, 29, 0.85) 90%,       /* recommence à foncer */
-    var(--background-color) 100%      /* foncé en bas */
+    var(--background-color) 0%,      
+    rgba(26, 25, 29, 0.85) 10%,       
+    rgba(26, 25, 29, 0.85) 30%,          
+    rgba(26, 25, 29, 0.85) 70%,          
+    rgba(26, 25, 29, 0.85) 90%,       
+    var(--background-color) 100%      
   );
   z-index: 1;
   pointer-events: none;
@@ -688,33 +664,11 @@ section {
   font-size: 3rem;
 }
 
-#trumpet {
-  background-image: url(img/trumpet.jpg);
-}
-
-#drums {
-  background-image: url(img/drums.jpg);
-}
-
-#piano {
-  background-image: url(img/piano.jpg);
-}
-
-#football {
-  background-image: url(img/football.jpg);
-}
-
-#table-tennis {
-  background-image: url(img/table_tennis.jpg);
-}
-
-#programming {
-  background-image: url(img/programming.jpg);
-}
-
-#video-games {
-  background-image: url(img/video_games.jpg);
-}
+#trumpet { background-image: url(img/trumpet.jpg); }
+#drums { background-image: url(img/drums.jpg); }
+#piano { background-image: url(img/piano.jpg); }
+#football { background-image: url(img/football.jpg); }
+#table-tennis { background-image: url(img/table_tennis.jpg); }
 
 
 /* --- Contact --- */
@@ -734,7 +688,8 @@ section {
   max-width: 800px;
   min-width: 300px;
   margin: 3rem 0;
-  width: 20%;
+  /* width: 20%; Width trop petite supprimée */
+  padding: 2rem;
   position: relative;
 }
 
@@ -779,163 +734,135 @@ footer {
 }
 
 
+/* --- MEDIA QUERIES --- */
 @media (max-width: 1120px) {
+  
+  .navbar {
+    padding: 0 2rem;
+    background: var(--background-color);
+  }
+  
   .brand-wrapper {
     width: 100%;
-  }
-
-  .navbar {
-    padding: 2rem;
-    background: var(--background-color);
+    /* Le brand wrapper prend toute la largeur pour séparer Logo et Burger */
   }
 
   .nav-links {
     position: fixed;
-    top: 5rem;
+    top: 0; /* Colle au haut */
     left: 0;
     width: 100%;
-    height: calc(100vh - 3rem);
+    height: 100vh; /* Prend tout l'écran */
     background-color: var(--background-color);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center; /* Centre les liens verticalement */
     overflow: hidden;
-    max-height: 0;
+    
+    /* Animation */
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, max-height 0.2s ease-in-out;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+    z-index: 1001; /* En dessous du burger (1002) */
   }
 
   .nav-links.active {
     opacity: 1;
     visibility: visible;
-    max-height: 100vh;
   }
 
   .nav-links li {
-    text-align: center;
-    margin: 0.5rem 0;
+    margin: 1.5rem 0; /* Plus d'espace sur mobile */
   }
 
   .burger {
-    width: 24px;
-    height: 24px;
-    max-width: 30px;
-    display: flex;
+    display: flex; /* Flex pour aligner les barres si besoin */
     flex-direction: column;
     justify-content: space-between;
-    align-items: center;
-    padding: 0;
+    width: 30px;
+    height: 24px;
     background: none;
     border: none;
     cursor: pointer;
+    padding: 0;
   }
 
   .burger .bar {
-    width: 25px;
+    width: 100%;
     height: 3px;
     background-color: var(--light-color);
-    display: block;
     transition: transform 0.3s ease, opacity 0.3s ease;
-    transform-origin: center;
   }
 
   .burger.is-open .bar:nth-child(1) {
-    transform: rotate(45deg);
-    position: relative;
-    top: 10px;
+    transform: translateY(10px) rotate(45deg);
   }
 
   .burger.is-open .bar:nth-child(3) {
-    transform: rotate(-45deg);
-    position: relative;
-    top: -10px;
+    transform: translateY(-11px) rotate(-45deg);
   }
 
   .burger.is-open .bar:nth-child(2) { opacity: 0; }
 
-  .flashcard-div {
-    width: 80%;
-  }
-
+  /* Formation en mode mobile */
   #formationContent {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3rem;
+    gap: 4rem; /* Plus d'espace car la date est dessous */
+    margin-top: 3rem;
   }
 
-  #formationContent .formation-div:nth-child(even) {
-    margin: 0;
-  }
-
-
+  /* On annule les marges gauche/droite complexes */
+  #formationContent .formation-div:nth-child(even),
   #formationContent .formation-div:nth-child(odd) {
     margin: 0;
+    width: 90%; /* Prend presque toute la largeur */
   }
 
-
-  #formationContent .formation-div {
-    transform: translateX(0);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-
-  #formationContent .formation-div:nth-child(even)::before, 
-  .formation-div:nth-child(even) .formation-date {
-    transform: translate(0%, 0%);
-    right: 0%
-  }
-
-
-  #formationContent .formation-div:nth-child(odd)::before,
-  .formation-div:nth-child(odd) .formation-date {
-    transform: translate(0%, 0%);
-    right: 0%;
-  }
-
+  /* On cache les points latéraux */
   #formationContent .formation-div::before {
-    content: "";
-    opacity: 0;
-    visibility: hidden;
+    display: none; 
   }
 
-  #formationContent .formation-date {
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    font-style: italic;
+  /* On remet la date en dessous, classique */
+  .formation-date {
+    position: static; /* Annule l'absolute position */
+    display: block;
+    width: 100%;
+    text-align: center !important; /* Force le centrage */
+    margin-top: 1.5rem;
+    color: #00ffaa;
+  }
+  
+  /* Reset des overrides spécifiques desktop */
+  #formationContent .formation-div:nth-child(even) .formation-date,
+  #formationContent .formation-div:nth-child(odd) .formation-date {
+    left: auto;
+    right: auto;
   }
 
-  .formation-div {
-    width: 90%;
+  .timeline {
+    display: none; 
   }
-
-  .timeline{
-    visibility: hidden;
-  }
-
 }
 
 @media (max-width: 900px) {
   section {
-    padding: 2rem;
+    padding: 2rem 1rem;
   }
 }
 
 @media (max-width: 768px) {
   .glitch {
-    min-height: 200px;
-    margin: 2rem;
-    overflow: hidden;
+    font-size: 2rem; /* Plus petit sur mobile */
+    margin-top: 2rem;
   }
 }
 
 @media (max-width: 500px) {
   .course-list {
-    margin: 0px;
+    padding: 1rem;
   }
 }
