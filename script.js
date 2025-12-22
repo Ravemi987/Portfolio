@@ -1,150 +1,127 @@
-// navbar, footer
 document.addEventListener("DOMContentLoaded", () => {
-  const nav_placeholder = document.getElementById("navbar-placeholder");
-  const footer_placeholder = document.getElementById("footer-placeholder")
+  initNavbar();
+  initFooter();
+  initTypeWriter();
+  initScrollAnimations();
+  initClipboard();
+});
 
-  if (nav_placeholder) {
+// --- Chargement Navbar & Footer ---
+function initNavbar() {
+  const navPlaceholder = document.getElementById("navbar-placeholder");
+  if (navPlaceholder) {
     fetch("navbar.html")
       .then(res => res.text())
       .then(data => {
-        nav_placeholder.innerHTML = data;
-        initNavbarFeatures();
-      });
+        navPlaceholder.innerHTML = data;
+        setupMobileMenu(); // Initialise le burger une fois le HTML chargé
+      })
+      .catch(err => console.error("Erreur chargement navbar:", err));
   }
+}
 
-  if (footer_placeholder) {
+function initFooter() {
+  const footerPlaceholder = document.getElementById("footer-placeholder");
+  if (footerPlaceholder) {
     fetch("footer.html")
       .then(res => res.text())
-      .then(data => {
-        footer_placeholder.innerHTML = data;
-      });
+      .then(data => footerPlaceholder.innerHTML = data);
   }
-});
+}
 
-
-function initNavbarFeatures() {
+// --- Menu Burger Mobile ---
+function setupMobileMenu() {
   const burger = document.querySelector(".burger");
   const navLinks = document.querySelector(".nav-links");
-
+  
   if (burger && navLinks) {
     burger.addEventListener("click", () => {
-      const open = navLinks.classList.toggle("active");
-      burger.classList.toggle("is-open", open);
-      document.body.classList.toggle('open');
+      const isOpen = navLinks.classList.toggle("active");
+      burger.classList.toggle("is-open", isOpen);
+      document.body.classList.toggle("open", isOpen);
+    });
+
+    // Fermer le menu si on clique sur un lien
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove("active");
+        burger.classList.remove("is-open");
+        document.body.classList.remove("open");
+      });
     });
   }
 }
 
+// --- Animation Scroll (Intersection Observer) ---
+// Beaucoup plus performant que window.addEventListener('scroll')
+function initScrollAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Optionnel: arrêter d'observer une fois apparu pour économiser des ressources
+        // observer.unobserve(entry.target); 
+      }
+    });
+  }, { threshold: 0.1 }); // Se déclenche quand 10% de l'élément est visible
 
-// ----------------
+  document.querySelectorAll('.scroll-appear').forEach(el => observer.observe(el));
+}
 
-// Effets d'apparition au scroll
-const scrollElements = document.querySelectorAll('.scroll-appear');
+// --- Machine à écrire (Typewriter) ---
+function initTypeWriter() {
+  const title = document.getElementById("typedText");
+  if (!title) return;
 
-const elementInView = (el, offset = 0) => {
-  const elementTop = el.getBoundingClientRect().top;
-  return (
-    elementTop <= 
-    (window.innerHeight || document.documentElement.clientHeight) - offset
-  );
-};
+  const text = title.getAttribute("data-text") || "Welcome";
+  let i = 0;
+  let isDeleting = false;
+  let timer;
 
-const displayScrollElement = (el) => {
-  el.classList.add('visible');
-};
+  function type() {
+    const speed = isDeleting ? 50 : 100;
+    
+    if (!isDeleting && i < text.length) {
+      title.textContent += text.charAt(i);
+      i++;
+    } else if (isDeleting && i > 0) {
+      title.textContent = text.substring(0, i - 1);
+      i--;
+    }
 
-const handleScrollAnimation = () => {
-  scrollElements.forEach((el) => {
-    if (elementInView(el, 50)) { // 50px avant que l'élément soit visible
-      displayScrollElement(el);
+    if (!isDeleting && i === text.length) {
+      isDeleting = true;
+      timer = setTimeout(type, 2000); // Pause avant d'effacer
+      return;
+    } else if (isDeleting && i === 0) {
+      isDeleting = false;
+      timer = setTimeout(type, 500); // Pause avant de réécrire
+      return;
+    }
+
+    timer = setTimeout(type, speed);
+  }
+  
+  type();
+}
+
+// --- Copier Email ---
+function initClipboard() {
+  const btn = document.getElementById("copyButton");
+  if (!btn) return;
+
+  btn.addEventListener("click", async () => {
+    const text = btn.dataset.copyText;
+    try {
+      await navigator.clipboard.writeText(text);
+      const originalHTML = btn.innerHTML;
+      btn.innerHTML = `<i class="fa-solid fa-check"></i> Copié !`;
+      
+      setTimeout(() => {
+        btn.innerHTML = originalHTML;
+      }, 2000);
+    } catch (err) {
+      console.error("Erreur copie", err);
     }
   });
-};
-
-window.addEventListener('scroll', handleScrollAnimation);
-window.addEventListener('load', handleScrollAnimation);
-
-// -----------------
-
-// Animation machine à écrire
-document.addEventListener("DOMContentLoaded", () => {
-  const title = document.getElementById("typedText");
-  const fullText = title.getAttribute("data-text") || "Welcome to my Portfolio ";
-  let i = 0;
-  let typingInterval;
-
-  const delayBeforeDeleting = 30_000;
-  const delayBeforeTyping = 2_000;
-  const typingSpeed = 100
-
-  function typeWriter() {
-    if (i < fullText.length) {
-      title.textContent += fullText[i];
-      i++;
-    } else {
-      clearInterval(typingInterval);
-      setTimeout(startDeleting, delayBeforeDeleting);
-    }
-  }
-
-  function startTyping() {
-    title.textContent = "";
-    i = 0;
-    typingInterval = setInterval(typeWriter, typingSpeed);
-  }
-
-  function deleteWriter() {
-    if (i > 0) {
-      title.textContent = fullText.substring(0, i - 1);
-      i--;
-    } else {
-      clearInterval(typingInterval);
-      setTimeout(startTyping, delayBeforeTyping);
-    }
-  }
-
-  function startDeleting() {
-    typingInterval = setInterval(deleteWriter, typingSpeed);
-  }
-
-  startTyping();
-});
-
-
-// Copie dans le presse-papiers
-
-let canClick = true;
-const clickCooldown = 2000; // 2 secondes de cooldown entre les clics
-const copyButton = document.getElementById("copyButton");
-
-copyButton.addEventListener("click", async () => {
-  if (!canClick) return;
-
-  canClick = false;
-
-  const textToCopy = copyButton.dataset.copyText;
-
-  try {
-    await navigator.clipboard.writeText(textToCopy);
-
-    // sauvegarder l'état original
-    const originalHTML = copyButton.innerHTML;
-
-    // mettre l'état “copié”
-    copyButton.innerHTML = `
-      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-        <path d="M7.5 13.5L4 10L5.5 8.5L7.5 10.5L14.5 3.5L16 5L7.5 13.5Z"/>
-      </svg>
-      Copié
-    `;
-
-    // revenir à l'état original après 2 secondes
-    setTimeout(() => {
-      copyButton.innerHTML = originalHTML;
-      canClick = true;
-    }, clickCooldown);
-
-  } catch (err) {
-    console.error("Erreur lors de la copie: ", err);
-  }
-});
+}
