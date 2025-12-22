@@ -1,15 +1,11 @@
 <!DOCTYPE html>
-<html lang="fr">
-
-<head>
+<html lang="en"> <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <title>Career Development - Rémi Airiau</title>
 
-  <!-- Lien CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Google Fonts (police style informatique/cyber) -->
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
@@ -18,7 +14,6 @@
 
   <canvas id="particle-canvas"></canvas>
   <div id="background-glow" class="background-glow"></div>
-
 
   <div class="page-wrapper">
     <div id="navbar-placeholder"></div>
@@ -32,30 +27,229 @@
       </header>
 
       <section id="presentation">
-        <div class="socials">
-          <a href="https://github.com/Ravemi987" target="_blank" class="icon">
-            <i class="fa-brands fa-github"></i> Github
-          </a>
-          <a href="https://www.linkedin.com/in/r%C3%A9mi-airiau-6a222a256/" target="_blank" class="icon">
-            <i class="fa-brands fa-linkedin"></i> Linkedin
-          </a>
+        <div class="glow-separator"></div>
+        <p class="default-text scroll-appear">
+          I am passionate about programming and have a particular interest in <strong>cybersecurity</strong>, 
+          <strong>artificial intelligence</strong>, and <strong>embedded systems</strong>, applied to the 
+          defense, aeronautics, and space sectors. I enjoy working on complex projects carried out within 
+          innovative and demanding environments that require rigor, determination, and creativity.
+        </p>
+        <p class="default-text scroll-appear">
+          My dream is to contribute to the development of <strong>critical systems</strong> for aircraft (planes, helicopters, drones), 
+          space missions (satellites, rockets, rovers), or naval defense (frigates, submarines, aircraft carriers). 
+          I aim to join industry leaders such as <strong>Thales, Airbus, Dassault Aviation, CNES</strong>, or the <strong>French Ministry of Armed Forces</strong>. 
+          These sectors are essential for national sovereignty, and the job market in these areas is currently very active, 
+          as I observed on <strong>LinkedIn</strong> and corporate career websites during my internship research.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="scroll-appear">Documents & Resources</h2>
+        <div class="documents-grid scroll-appear">
+          
+          <div class="doc-card glass-effect">
+            <div class="doc-icon"><i class="fa-solid fa-file-pdf"></i></div>
+            <h3>Resume (CV)</h3>
+            <p>English Version</p>
+            <div class="doc-actions">
+              <a href="docs/CV_Remi_Airiau_EN.pdf" target="_blank" class="btn-doc"><i class="fa-solid fa-eye"></i> Preview</a>
+              <a href="docs/CV_Remi_Airiau_EN.pdf" download class="btn-doc"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+
+          <div class="doc-card glass-effect">
+            <div class="doc-icon"><i class="fa-solid fa-file-pdf"></i></div>
+            <h3>CV</h3>
+            <p>Version Française</p>
+            <div class="doc-actions">
+              <a href="docs/CV_Remi_Airiau_FR.pdf" target="_blank" class="btn-doc"><i class="fa-solid fa-eye"></i> Aperçu</a>
+              <a href="docs/CV_Remi_Airiau_FR.pdf" download class="btn-doc"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+
+          <div class="doc-card glass-effect">
+            <div class="doc-icon"><i class="fa-solid fa-file-powerpoint"></i></div>
+            <h3>Presentation Slides</h3>
+            <p>Project Portfolio & Pitch</p>
+            <div class="doc-actions">
+              <a href="docs/PPP_Remi_Airiau.pdf" class="btn-doc"><i class="fa-solid fa-eye"></i> Preview</a>
+              <a href="docs/PPP_Remi_Airiau.pdf" download class="btn-doc"><i class="fa-solid fa-download"></i></a>
+            </div>
+          </div>
+
         </div>
       </section>
 
+      <section>
+        <div class="glow-separator"></div>
+        <h2 class="scroll-appear">Academic Path</h2>
+        
+        <div class="timeline-horizontal-wrapper scroll-appear glass-effect">
+          
+        <div class="h-step completed">
+          <div class="h-point"></div>
+          <div class="h-content">
+            <h3>Bachelor's Degree</h3>
+            <p>Computer Science</p>
+          </div>
+        </div>
+
+        <div class="h-line completed"></div>
+
+        <div class="h-step current">
+          <div class="h-point pulse"></div>
+          <div class="h-content">
+            <h3>Engineering - Year 2</h3>
+            <p>Architecture, Systems & Networks</p>
+            <span class="badge-now">NOW</span>
+          </div>
+        </div>
+
+        <div class="h-line dashed"></div>
+
+        <div class="h-step future">
+          <div class="h-point"></div>
+          <div class="h-content">
+            <h3>Year 3 Specialization</h3>
+            <p>TLS-SEC or Embedded Systems & IoT</p>
+          </div>
+        </div>
+      </div>
+
+        <div class="future-options scroll-appear">
+          <div class="option-card glass-effect">
+            <h3><i class="fa-solid fa-shield-halved"></i> TLS-SEC Track</h3>
+            <p>Taught at ENSEEIHT & INSA. Trains the next generation of <strong>cybersecurity experts</strong>. Covers hardware architecture, networks security, cryptography, pentesting, and critical systems.</p>
+          </div>
+          
+          <div class="option-card glass-effect">
+            <h3><i class="fa-solid fa-microchip"></i> Embedded Systems</h3>
+            <p>Provides solid knowledge in <strong>Real-Time Operating Systems (RTOS)</strong>, embedded networks, IoT and system validation. Skills applied to AI & cybersecurity.</p>
+          </div>
+        </div>
+
+      </section>
+
 
       <section>
-        <p class="default-text scroll-appear">Section 1</p>
-        <p class="default-text scroll-appear glass-effect"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo maxime ducimus ad dolorum omnis, rerum voluptatibus rem sequi, quia, ipsa consectetur iusto culpa laborum ex eligendi sed iste reprehenderit molestiae!</p>
+        <h2 class="scroll-appear">Professional Targets</h2>
+        <div class="ppp-grid scroll-appear">
+
+          <div class="ppp-card glass-effect">
+            <div class="ppp-icon"><i class="fa-solid fa-user-shield"></i></div>
+            <h3>Cybersecurity Engineer</h3>
+            <p>Forensics, pentesting, and threat detection using Machine Learning.</p>
+            <div class="ppp-tags">
+              <span class="flashcard-tag tag-shell">Bash</span>
+              <span class="flashcard-tag tag-python">Python</span>
+              <span class="flashcard-tag tag-other">Assembly</span>
+            </div>
+          </div>
+
+          <div class="ppp-card glass-effect">
+            <div class="ppp-icon"><i class="fa-solid fa-brain"></i></div>
+            <h3>Intelligent Systems Engineer</h3>
+            <p>Intersection of AI, Robotics, and Critical Systems. Focus on Deep Learning, Navigation, and <strong>Sensors</strong>.</p>
+            <div class="ppp-tags">
+              <span class="flashcard-tag tag-python">Python</span>
+              <span class="flashcard-tag tag-c">C++</span>
+              <span class="flashcard-tag tag-java">Java</span>
+            </div>
+          </div>
+
+          <div class="ppp-card glass-effect">
+            <div class="ppp-icon"><i class="fa-solid fa-memory"></i></div>
+            <h3>Embedded Systems Engineer</h3>
+            <p>Microcontrollers, FPGAs, RTOS, optimizing resources and hardware constraints.</p>
+            <div class="ppp-tags">
+              <span class="flashcard-tag tag-c">C/C++</span>
+              <span class="flashcard-tag tag-other">VHDL</span>
+              <span class="flashcard-tag tag-other">RTOS</span>
+            </div>
+          </div>
+
+        </div>
       </section>
 
       <section>
-        <p class="default-text scroll-appear">Section 2</p>
-        <p class="default-text scroll-appear glass-effect"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo maxime ducimus ad dolorum omnis, rerum voluptatibus rem sequi, quia, ipsa consectetur iusto culpa laborum ex eligendi sed iste reprehenderit molestiae!</p>
-      </section>
+        <div class="glow-separator"></div>
+        <h2 class="scroll-appear">Field Insights</h2>
+        <p class="default-text scroll-appear" style="margin-bottom: 3rem;">
+          To refine my choices, I interviewed professionals via MyJobGlasses.
+        </p>
 
-      <section>
-        <p class="default-text scroll-appear">Section 3</p>
-        <p class="default-text scroll-appear glass-effect"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo maxime ducimus ad dolorum omnis, rerum voluptatibus rem sequi, quia, ipsa consectetur iusto culpa laborum ex eligendi sed iste reprehenderit molestiae!</p>
+      <div class="interviews-wrapper">
+
+        <div class="interview-card scroll-appear">
+          <div class="interview-header">
+            <div class="shadow-avatar">
+              <i class="fas fa-user-secret"></i>
+            </div>
+            <div class="interview-meta">
+              <h3>Béatrice</h3>
+              <span class="role">Digital Forensics Laboratory Manager</span>
+              
+              <div class="company-row">
+                  <i class="fas fa-laptop-code"></i> 
+                  <span>Directorate General of Armament (DGA)</span>
+              </div>
+            </div>
+          </div>
+          <div class="interview-quote">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p>
+              "The role of the DGA is to develop equipment for our military forces. As a Digital Forensic Manager in cyberdefense, I analyze every device likely to contain information: from phones and hard drives to memory and critical systems. This role demands solid knowledge in systems, networks, software engineering and cybersecurity. It also requires a lot of patience, as you must be meticulous in your research. I am fortunate to work with devices and systems at the cutting edge of technology, and to work on projects that you simply won't see anywhere else."
+            </p>
+          </div>
+        </div>
+
+        <div class="interview-card scroll-appear">
+          <div class="interview-header">
+            <div class="shadow-avatar">
+              <i class="fas fa-user-tie"></i>
+            </div>
+            <div class="interview-meta">
+              <h3>Jaime</h3>
+              <span class="role">Technical Manager for R&T in Aerial Surveillance</span>
+              
+              <div class="company-row">
+                  <i class="fas fa-fighter-jet"></i>
+                  <span>Thales</span>
+              </div>
+            </div>
+          </div>
+          <div class="interview-quote">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p>
+              "As a Technical lead in Research and Technology within the defense sector, my mission is to explore the scientific feasibility of implementing new technologies, especially AI, by creating prototypes and demonstrators. The main goal is to reduce the risks and prepare the development phase. It requires strong skills in artificial intelligence (Computer Vision, LLM, Deep Learning), as well as the ability to program according to RAMS principles (Reliability, Availability, Maintainability, Safety)."
+            </p>
+          </div>
+        </div>
+
+        <div class="interview-card scroll-appear">
+          <div class="interview-header">
+            <div class="shadow-avatar">
+              <i class="fas fa-user-astronaut"></i>
+            </div>
+            <div class="interview-meta">
+              <h3>Enzo</h3>
+              <span class="role">Systems Verification & Validation (V&V) Engineer</span>
+              
+              <div class="company-row">
+                  <i class="fas fa-satellite"></i>
+                  <span>Airbus Defense & Space</span>
+              </div>
+            </div>
+          </div>
+          <div class="interview-quote">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p>
+              "As a Validation Engineer, my main mission is to design, lead and automate testing processes for electronic cards and equipment embedded in satellites. My work really sits at the intersection of computer science and electronics. At times, I spend several months programming in C, Python or VHDL. Other times, I perform wiring and operate measurement instruments such as oscilloscopes, signal generators and power supplies, interfaced with a computer in order to form a test rack. This simulates the satellite's environment before launch. Systems validation demands extreme rigor, as maintenance is no longer possible once a satellite is in deep space."
+            </p>
+          </div>
+        </div>
+
+      </div>
       </section>
 
     </main>
@@ -67,5 +261,4 @@
   <script src="script.js"></script>
 
 </body>
-
 </html>
