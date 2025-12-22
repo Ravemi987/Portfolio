@@ -1,10 +1,48 @@
 :root {
-  --background-color: #1e1c27;
-  --text-color: #e1e1e1;
-  --light-color: #fff;
+  /* --- PALETTE DE COULEURS --- */
+  
+  /* Arrière-plan */
+  --bg-dark: #1e1c27;
+  --bg-overlay: rgba(26, 25, 29, 0.85); /* Pour les images de fond */
+
+  /* Texte */
+  --text-main: #e1e1e1;       /* Blanc cassé pour la lecture */
+  --text-highlight: #ffffff;  /* Blanc pur pour les titres */
+  
+  /* Thème Principal (Le Vert/Cyan du site) */
+  --theme-primary: #00ffbf;            /* Couleur principale */
+  --theme-primary-rgb: 0, 255, 191;    /* Version RGB pour gérer la transparence */
+  
+  --theme-secondary: #00ffaa;          /* Variante légèrement plus verte (ombres) */
+  
+  /* Accents (A utiliser avec parcimonie) */
+  --accent-cyan: #00ffff;    /* Cyan électrique (très lumineux) */
+  --accent-magenta: #ff00ff; /* Magenta (pour l'effet glitch uniquement) */
+  
+  /* UI & Verre */
+  --glass-bg: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.1);
+
+  /* Tags Projets (Couleurs spécifiques) */
+  --tag-java: #2de057;
+  --tag-java-shadow: #15b85f;
+  --tag-javafx: #f125e7;
+  --tag-javafx-shadow: #ab1bb8;
+  --tag-c: #23e6a2;
+  --tag-c-shadow: #1bb8a1;
+  --tag-python: #facb56;
+  --tag-python-shadow: #ad9f1b;
+  --tag-shell: #ef5757;
+  --tag-shell-shadow: #b81b1b;
+  --tag-r: #7dd5e9;
+  --tag-r-shadow: #46ebf4;
+  --tag-css: #2b4bca;
+  --tag-css-shadow: #3959db;
+  --tag-other: #d22f75;
+  --tag-other-shadow: #e31b7f;
 }
 
-/* --- AJOUT CRITIQUE POUR FIXER L'OVERFLOW --- */
+/* --- RESET & BASE --- */
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -17,8 +55,8 @@ body {
   margin: 0;
   padding-top: 70px;
   font-family: 'Share Tech Mono', monospace;
-  background-color: var(--background-color);
-  color: var(--text-color);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
   background-size: cover;
   background-attachment: fixed;
   min-height: 100vh;
@@ -27,14 +65,20 @@ body {
   justify-content: space-between;
 }
 
+body.open {
+  overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
+}
 
+/* --- PARTICLES & BACKGROUND --- */
 #particle-canvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
   background: transparent;
   z-index: 1;
   overflow: hidden;
@@ -57,23 +101,54 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 100%; /* Sécurité */
+  width: 100%;
+}
+
+/* --- GLOW SEPARATOR --- */
+.glow-separator {
+  position: relative;
+  width: 100%;
+  height: 0;
+  z-index: -1;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.glow-separator::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 100rem; /* Hauteur exagérée pour un dégradé très doux */
+  transform: translateY(-50%); 
+  
+  /* Utilisation des variables RGB pour la transparence */
+  background: linear-gradient(
+    to bottom,
+    rgba(var(--theme-primary-rgb), 0) 0%,      
+    rgba(var(--theme-primary-rgb), 0.01) 15%,   
+    rgba(var(--theme-primary-rgb), 0.04) 50%,   /* Pic de lumière très subtil */
+    rgba(var(--theme-primary-rgb), 0.01) 85%,   
+    rgba(var(--theme-primary-rgb), 0) 100%     
+  );
 }
 
 main {
   flex: 1;
-  width: 100%; /* Sécurité */
+  width: 100%;
 }
 
 
-/* Titre */
+/* --- TYPOGRAPHIE & EFFETS TEXTE --- */
+
 .glitch {
   font-size: 3rem;
   text-align: center;
   margin-top: 5rem;
+  color: var(--text-main);
 }
 
-/* Curseur titre */
 .cursor {
   display: inline-block;
   width: 6px;
@@ -81,12 +156,13 @@ main {
   vertical-align: text-top;
   background: white;
   border-radius: 2px;
-
+  
+  /* Lueur du curseur */
   box-shadow:
-    0 0 5px #00ffcc,
-    0 0 10px #00ffaa,
-    0 0 20px #00ffcc,
-    0 0 40px #00ffaa;
+    0 0 5px var(--accent-cyan),
+    0 0 10px var(--theme-secondary),
+    0 0 20px var(--accent-cyan),
+    0 0 40px var(--theme-secondary);
 
   animation: blink 0.9s infinite;
   margin-left: 5px;
@@ -94,15 +170,16 @@ main {
 
 .glass-effect {
   backdrop-filter: blur(5px);
-  background: #ffffff03;
-  border: 1px solid #ffffff1a;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: 16px;
 }
 
+/* Animations */
 @keyframes flicker {
   0% { opacity: 1; }
-  50% { opacity: 0.8; text-shadow: 0 0 3px #f0f, 0 0 10px #0ff; }
-  100% { opacity: 1; text-shadow: 0 0 5px #0ff, 0 0 15px #f0f; }
+  50% { opacity: 0.8; text-shadow: 0 0 3px var(--accent-magenta), 0 0 10px var(--accent-cyan); }
+  100% { opacity: 1; text-shadow: 0 0 5px var(--accent-cyan), 0 0 15px var(--accent-magenta); }
 }
 
 @keyframes blink {
@@ -110,19 +187,19 @@ main {
   51%, 100% {opacity: 0;}
 }
 
-/* Paragraphe */
+/* Contenu Textuel */
 .default-text {
   max-width: 800px;
   padding: 2rem;
   font-size: 1.2rem;
   text-align: center;
   line-height: 1.5;
-  color: var(--text-color);
-  margin: 0 auto; /* Centrage safe */
+  color: var(--text-main);
+  margin: 0 auto;
 }
 
 h1, h2, p {
-  color: var(--text-color);
+  color: var(--text-main);
 }
 
 h1, h2 {
@@ -132,7 +209,7 @@ h1, h2 {
   overflow-wrap: break-word;
 }
 
-/* Icônes des réseaux */
+/* --- BOUTONS SOCIAUX (Refactorisé) --- */
 .socials {
   display: flex;
   flex-wrap: wrap;
@@ -144,27 +221,35 @@ h1, h2 {
 .icon {
   text-decoration: none;
   font-size: 1.2rem;
-  background: #00ffbf;
-  box-shadow: 0 0 5px #00ffbf, 0 0 15px #0ff;
-  color: #000;
-  border: 3px solid #00ffbf;
+  
+  /* État par défaut : contours verts, fond sombre légèrement teinté */
+  background: rgba(var(--theme-primary-rgb), 0.05); 
+  color: var(--theme-primary);
+  border: 2px solid var(--theme-primary);
+  box-shadow: 0 0 5px rgba(var(--theme-primary-rgb), 0.3);
+  
   padding: 0.5rem 1rem;
   border-radius: 8px;
   transition: all 0.3s ease;
   width: 10rem;
-  text-align: center; /* Ajout pour centrer le texte dans le bouton */
+  text-align: center;
 }
 
 .icon:hover {
-  background: #0ff;
-  color: #000;
-  box-shadow: 0 0 20px #0ff, 0 0 40px #f0f;
+  /* Au survol : On remplit en vert, texte sombre */
+  background: var(--theme-primary);
+  color: var(--bg-dark); 
+  font-weight: bold;
+  
+  /* Glow vert intense (plus de bleu ni magenta) */
+  box-shadow: 0 0 15px var(--theme-primary), 0 0 30px var(--theme-secondary);
+  
   transform: scale(1.1) rotate(-2deg);
-  border: 3px solid #0ff;
+  border: 2px solid var(--theme-primary);
 }
 
 
-/* --- Barre de navigation --- */
+/* --- NAVIGATION --- */
 
 .navbar {
   position: fixed;
@@ -175,16 +260,15 @@ h1, h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem; /* Simplifié pour éviter l'overflow */
-  height: 70px; /* Hauteur fixe pour stabiliser le layout */
+  padding: 0 2rem;
+  height: 70px;
 }
 
 .brand-wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* width: 30%; Suppression de la largeur fixe qui casse le responsive */
-  z-index: 1002; /* Doit être au-dessus du menu mobile */
+  z-index: 1002;
 }
 
 .brand {
@@ -195,7 +279,7 @@ h1, h2 {
 }
 
 .brand .name, .brand .title {
-  color: #00ffbf;
+  color: var(--theme-primary);
 }
 
 .brand .name {
@@ -221,7 +305,7 @@ h1, h2 {
 .nav-links li a {
   text-decoration: none;
   font-size: 1.2rem;
-  color: var(--text-color);
+  color: var(--text-main);
   padding: 0.5rem 1rem;
   border-radius: 6px;
   transition: all 0.3s ease;
@@ -231,7 +315,7 @@ h1, h2 {
 }
 
 .nav-links li a:hover {
-  color: #0ff;
+  color: var(--accent-cyan);
 }
 
 .nav-links li a::after {
@@ -241,8 +325,8 @@ h1, h2 {
   bottom: 0;
   width: 0;
   height: 1px;
-  background-color: #0ff;
-  box-shadow: 0 0 2px #0ff, 0 0 5px #00ffbf;
+  background-color: var(--accent-cyan);
+  box-shadow: 0 0 2px var(--accent-cyan), 0 0 5px var(--theme-primary);
   transition: width 0.3s ease;
   transform: translateX(-50%);
 }
@@ -253,23 +337,22 @@ h1, h2 {
 
 .burger {
   display: none;
-  z-index: 1002; /* Au-dessus du menu déroulant */
+  z-index: 1002;
 }
 
-/* --- Sections --- */
+/* --- SECTIONS GÉNÉRALES --- */
 
 section {
   width: 100%;     
   display: flex;
   flex-direction: column;     
   align-items: center;
-  padding: 3rem 1rem; /* Padding horizontal réduit pour mobile */   
+  padding: 3rem 1rem; 
   margin: 0;                   
-  color: var(--light-color);
+  color: var(--text-highlight);
   text-align: center;
   line-height: 1.5;
 }
-
 
 .scroll-appear {
   opacity: 0;
@@ -282,7 +365,7 @@ section {
   transform: translateY(0);
 }
 
-/* --- index.html (Formation) --- */
+/* --- TIMELINE (FORMATION) --- */
 
 #formationContent {
   position: relative;
@@ -292,120 +375,102 @@ section {
   padding: 20px 0;
 }
 
-/* La ligne centrale */
 .timeline {
   position: absolute;
   width: 4px;
-  background: #00ffaa;
+  background: var(--theme-secondary);
   top: 0;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 2px;
-  box-shadow: 0 0 15px #00ffaa;
-  opacity: 1; /* Opacité remontée pour la visibilité */
+  box-shadow: 0 0 15px var(--theme-secondary);
+  opacity: 1;
 }
 
-/* Styles communs des boîtes */
 .formation-div {
   position: relative;
-  width: 45%; /* Largeur fixe pour calculer le centre facilement */
-  margin-bottom: 4rem; /* Espace vertical entre les events */
+  width: 45%;
+  margin-bottom: 4rem;
   padding: 1.5rem;
-  /* On garde ton style existant */
-  border: 3px solid #00ffbf;
+  border: 3px solid var(--theme-primary);
   border-radius: 8px;
-  box-shadow: 0 0 10px #00ffbf;
+  box-shadow: 0 0 10px var(--theme-primary);
 }
 
-/* --- LOGIQUE DROITE / GAUCHE --- */
-
-/* Éléments pairs (A Droite) */
 #formationContent .formation-div:nth-child(even) {
-  margin-left: 55%; /* 50% (milieu) + 5% (demi-marge) */
+  margin-left: 55%;
 }
 
-/* Éléments impairs (A Gauche) */
 #formationContent .formation-div:nth-child(odd) {
   margin-left: 0;
-  margin-right: 55%; /* Force l'élément à gauche */
+  margin-right: 55%;
 }
 
-
-/* --- LES POINTS (CERCIERS) --- */
-
-/* Style du point */
+/* Points de la timeline */
 .formation-div::before {
   content: "";
   position: absolute;
   width: 24px;
   height: 24px;
-  background-color: #1e1c27; /* Fond sombre pour cacher la ligne derrière */
-  border: 4px solid #00ffbf;
+  background-color: var(--bg-dark);
+  border: 4px solid var(--theme-primary);
   border-radius: 50%;
-  top: 25px; /* Aligné avec le début du texte */
+  top: 25px;
   z-index: 10;
-  box-shadow: 0 0 10px #00ffbf, inset 0 0 5px #00ffbf;
+  box-shadow: 0 0 10px var(--theme-primary), inset 0 0 5px var(--theme-primary);
   transition: transform 0.3s ease;
 }
 
-/* Position du point pour la boite de DROITE -> Doit être à sa gauche */
 #formationContent .formation-div:nth-child(even)::before {
-  left: -11.5%; /* Calcul mathématique : 5% (espace) / 45% (largeur) = 11.11% */
+  left: -11.5%;
   transform: translateX(-50%);
 }
 
-/* Position du point pour la boite de GAUCHE -> Doit être à sa droite */
 #formationContent .formation-div:nth-child(odd)::before {
   right: -11.5%;
   transform: translateX(50%);
-  left: auto; /* Reset pour éviter les conflits */
+  left: auto;
 }
 
-
-/* --- LES DATES (OPPOSÉES) --- */
-
+/* Dates */
 .formation-date {
   position: absolute;
-  top: 25px; /* Aligné avec le point */
+  top: 25px;
   width: 200px;
   font-family: 'Share Tech Mono', monospace;
   font-size: 1.3rem;
   font-weight: bold;
-  color: #00ffbf;
-  text-shadow: 0 0 5px #00ffbf;
+  color: var(--theme-primary);
+  text-shadow: 0 0 5px var(--theme-primary);
   padding: 0;
   margin: 0;
 }
 
-/* Date pour boite de DROITE -> Doit s'afficher à GAUCHE */
 #formationContent .formation-div:nth-child(even) .formation-date {
-  left: -60%; /* Pousse le texte de l'autre côté de la timeline */
+  left: -60%;
   text-align: right;
-  transform: none; /* Annule le centrage précédent */
+  transform: none;
 }
 
-/* Date pour boite de GAUCHE -> Doit s'afficher à DROITE */
 #formationContent .formation-div:nth-child(odd) .formation-date {
-  right: -60%; /* Pousse le texte de l'autre côté de la timeline */
+  right: -60%;
   text-align: left;
   transform: none;
 }
 
-/* --- courses.html --- */
 
-
-/* content */
+/* --- COURSES & LISTES --- */
 
 .course-list {
   max-width: 900px;
   margin: 2rem auto;
   font-size: 1.1rem;
   line-height: 1.6;
-  color: var(--light-color);
+  color: var(--text-highlight);
   text-align: left;
   padding: 3rem;
-  width: 100%; /* Sécurité */
+  width: 100%;
 }
 
 .course-list h3 {
@@ -415,11 +480,11 @@ section {
 }
 
 .course-list.green-list h3 {
-  color: #75f7af;
+  color: #75f7af; /* Peut rester spécifique ou utiliser une var accent */
 }
 
 .course-list.blue-list h3 {
-  color: #00ffbf;
+  color: var(--theme-primary);
 }
 
 .course-list ul {
@@ -441,15 +506,15 @@ section {
 
 .course-list.green-list .chevron {
   color: #75f7af;
-  text-shadow: 0 0 5px #75f7af, 0 0 10px #00ffaa;
+  text-shadow: 0 0 5px #75f7af, 0 0 10px var(--theme-secondary);
 }
 
 .course-list.blue-list .chevron {
-  color: #00ffbf;
-  text-shadow: 0 0 5px #00ffbf, 0 0 10px #0ff;
+  color: var(--theme-primary);
+  text-shadow: 0 0 5px var(--theme-primary), 0 0 10px var(--accent-cyan);
 }
 
-/* projects */
+/* --- PROJECTS (FLASHCARDS) --- */
 
 #projectContent {
   display: flex;
@@ -460,36 +525,34 @@ section {
   margin: 30px auto 30px auto;
 }
 
-/* Modification ici pour utiliser Flexbox proprement (comme un grid) */
 #projectContent-top, #projectContent-bottom {
   display: flex;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem; /* Remplace les margins aléatoires */
+  gap: 2rem;
   width: 100%;
   margin-bottom: 2rem;
 }
 
-/* --- Flashcard --- */
 .flashcard-div {
   position: relative;
-  /* width: 30%; On retire la largeur fixe rigide */
-  width: 350px; /* Largeur de base */
-  max-width: 100%; /* Responsive */
-  flex-grow: 1; /* Permet de remplir l'espace si besoin */
-  
+  flex: 1 1 300px; 
+  max-width: 400px;
   min-height: 500px;
   padding: 2rem 1rem;
-  margin: 0; /* Géré par le gap du parent */
+  margin: 0; 
   overflow: hidden;
+  
+  border: 3px solid var(--glass-border); 
+  transform: translateZ(0); 
+  backface-visibility: hidden;
   transition: all 0.4s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Background */
 .flashcard-div::before {
   content: "";
   position: absolute;
@@ -502,6 +565,7 @@ section {
   background-position: center;
 }
 
+/* Images de fond des cartes */
 .cyber::before { background-image: url('img/cyber-bg.jpg'); }
 .chess::before { background-image: url('img/chess-bg.jpg'); }
 .neurals::before { background-image: url('img/neurals-bg.jpg'); }
@@ -521,18 +585,16 @@ section {
 
 .flashcard-div:hover {
   transform: translateY(-10px);
-  box-shadow: 0 0 25px rgba(0,255,255,0.7);
-  border: 3px solid #0ff;
-  box-shadow: 0 0 15px rgba(0,255,255,0.4);
+  border-color: rgb(255, 255, 255); 
+  box-shadow: 0 0 25px rgba(0,255,255,0.7), inset 0 0 10px rgba(0,255,255,0.2);
 }
 
-/* Logo avec icône */
 .flashcard-logo {
   position: relative;
   width: 100px;
   height: 100px;
   background-color: rgba(0,255,255,0.1);
-  border: 2px solid #0ff;
+  border: 2px solid var(--accent-cyan);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -544,7 +606,7 @@ section {
 
 .flashcard-icon {
   font-size: 2.5rem;
-  color: #0ff;
+  color: var(--accent-cyan);
   transition: all 0.3s ease;
 }
 
@@ -556,10 +618,9 @@ section {
 
 .flashcard-div:hover .flashcard-icon {
   color: #00ff74;
-  text-shadow: 0 0 8px #00ffaa;
+  text-shadow: 0 0 8px var(--theme-secondary);
 }
 
-/* Texte */
 .flashcard-div h2 {
   font-size: 1.8rem;
   margin: 0.5rem 0;
@@ -579,11 +640,11 @@ section {
 }
 
 .flashcard-div:hover h2 {
-  color: #00ffbf;
+  color: var(--theme-primary);
 }
 
 .flashcard-div:hover p {
-  color: var(--light-color);
+  color: var(--text-highlight);
 }
 
 /* Tags */
@@ -601,21 +662,21 @@ section {
   border-radius: 12px;
   font-size: 0.8rem;
   font-weight: bold;
-  margin: 5px; /* Ajusté */
+  margin: 5px;
 }
 
-/* Tags custom colors */
-.tag-java { background: #2de057; box-shadow: 0 0 15px #15b85f; }
-.tag-javafx { background: #f125e7; box-shadow: 0 0 15px #ab1bb8; }
-.tag-c { background: #23e6a2; box-shadow: 0 0 15px #1bb8a1; }
-.tag-python { background: #facb56; box-shadow: 0 0 15px #ad9f1b; }
-.tag-shell { background: #ef5757; box-shadow: 0 0 15px #b81b1b; }
-.tag-r { background: #7dd5e9; box-shadow: 0 0 15px #46ebf4; }
-.tag-css { background: #2b4bca; box-shadow: 0 0 15px #3959db; }
-.tag-other { background: #d22f75; box-shadow: 0 0 15px #e31b7f; }
+/* Utilisation des variables pour les tags */
+.tag-java { background: var(--tag-java); box-shadow: 0 0 15px var(--tag-java-shadow); }
+.tag-javafx { background: var(--tag-javafx); box-shadow: 0 0 15px var(--tag-javafx-shadow); }
+.tag-c { background: var(--tag-c); box-shadow: 0 0 15px var(--tag-c-shadow); }
+.tag-python { background: var(--tag-python); box-shadow: 0 0 15px var(--tag-python-shadow); }
+.tag-shell { background: var(--tag-shell); box-shadow: 0 0 15px var(--tag-shell-shadow); }
+.tag-r { background: var(--tag-r); box-shadow: 0 0 15px var(--tag-r-shadow); }
+.tag-css { background: var(--tag-css); box-shadow: 0 0 15px var(--tag-css-shadow); }
+.tag-other { background: var(--tag-other); box-shadow: 0 0 15px var(--tag-other-shadow); }
 
 
-/* --- activities.html --- */
+/* --- ACTIVITÉS & LOISIRS --- */
 
 .activities-section-wrapper {
   display: flex;
@@ -646,12 +707,12 @@ section {
   inset: 0;
   background: linear-gradient(
     to bottom,
-    var(--background-color) 0%,      
-    rgba(26, 25, 29, 0.85) 10%,       
-    rgba(26, 25, 29, 0.85) 30%,          
-    rgba(26, 25, 29, 0.85) 70%,          
-    rgba(26, 25, 29, 0.85) 90%,       
-    var(--background-color) 100%      
+    var(--bg-dark) 0%,      
+    var(--bg-overlay) 10%,       
+    var(--bg-overlay) 30%,          
+    var(--bg-overlay) 70%,          
+    var(--bg-overlay) 90%,       
+    var(--bg-dark) 100%      
   );
   z-index: 1;
   pointer-events: none;
@@ -660,7 +721,7 @@ section {
 .activities-section h1 {
   position: relative;
   z-index: 2;
-  color: var(--light-color);
+  color: var(--text-highlight);
   font-size: 3rem;
 }
 
@@ -671,7 +732,7 @@ section {
 #table-tennis { background-image: url(img/table_tennis.jpg); }
 
 
-/* --- Contact --- */
+/* --- CONTACT --- */
 
 #contact {
   display: flex;
@@ -688,8 +749,7 @@ section {
   max-width: 800px;
   min-width: 300px;
   margin: 3rem 0;
-  /* width: 20%; Width trop petite supprimée */
-  padding: 2rem;
+  padding: 1rem;
   position: relative;
 }
 
@@ -707,7 +767,7 @@ section {
   gap: 8px;
   margin: 1rem;
   background-color: transparent;
-  color: var(--text-color);
+  color: var(--text-main);
   border: 0px;
   cursor: pointer;
   font-family: inherit;
@@ -715,13 +775,13 @@ section {
 }
 
 
-/* --- Footer -- */
+/* --- FOOTER --- */
 
 footer {
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
-  color: #0ff;
+  color: var(--accent-cyan);
 }
 
 .footer ul {
@@ -739,32 +799,30 @@ footer {
   
   .navbar {
     padding: 0 2rem;
-    background: var(--background-color);
+    background: var(--bg-dark);
   }
   
   .brand-wrapper {
     width: 100%;
-    /* Le brand wrapper prend toute la largeur pour séparer Logo et Burger */
   }
 
   .nav-links {
     position: fixed;
-    top: 0; /* Colle au haut */
+    top: 0; 
     left: 0;
     width: 100%;
-    height: 100vh; /* Prend tout l'écran */
-    background-color: var(--background-color);
+    height: 100vh;
+    background-color: var(--bg-dark);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centre les liens verticalement */
+    justify-content: center; 
     overflow: hidden;
     
-    /* Animation */
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-    z-index: 1001; /* En dessous du burger (1002) */
+    z-index: 1001; 
   }
 
   .nav-links.active {
@@ -773,11 +831,11 @@ footer {
   }
 
   .nav-links li {
-    margin: 1.5rem 0; /* Plus d'espace sur mobile */
+    margin: 1.5rem 0; 
   }
 
   .burger {
-    display: flex; /* Flex pour aligner les barres si besoin */
+    display: flex; 
     flex-direction: column;
     justify-content: space-between;
     width: 30px;
@@ -791,7 +849,7 @@ footer {
   .burger .bar {
     width: 100%;
     height: 3px;
-    background-color: var(--light-color);
+    background-color: var(--text-highlight);
     transition: transform 0.3s ease, opacity 0.3s ease;
   }
 
@@ -810,33 +868,29 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4rem; /* Plus d'espace car la date est dessous */
+    gap: 4rem; 
     margin-top: 3rem;
   }
 
-  /* On annule les marges gauche/droite complexes */
   #formationContent .formation-div:nth-child(even),
   #formationContent .formation-div:nth-child(odd) {
     margin: 0;
-    width: 90%; /* Prend presque toute la largeur */
+    width: 90%; 
   }
 
-  /* On cache les points latéraux */
   #formationContent .formation-div::before {
     display: none; 
   }
 
-  /* On remet la date en dessous, classique */
   .formation-date {
-    position: static; /* Annule l'absolute position */
+    position: static; 
     display: block;
     width: 100%;
-    text-align: center !important; /* Force le centrage */
+    text-align: center !important; 
     margin-top: 1.5rem;
-    color: #00ffaa;
+    color: var(--theme-secondary);
   }
   
-  /* Reset des overrides spécifiques desktop */
   #formationContent .formation-div:nth-child(even) .formation-date,
   #formationContent .formation-div:nth-child(odd) .formation-date {
     left: auto;
@@ -856,12 +910,44 @@ footer {
 
 @media (max-width: 768px) {
   .glitch {
-    font-size: 2rem; /* Plus petit sur mobile */
+    font-size: 2rem; 
     margin-top: 2rem;
+  }
+
+  /* --- FIX LISIBILITÉ MOBILE --- */
+  
+  section {
+    text-align: left;
+  }
+
+  .default-text, p {
+    text-align: left !important;
+    width: 100%;
+  }
+
+  h1, h2, .glitch {
+    text-align: center !important;
+  }
+
+  .socials {
+    justify-content: center;
+  }
+
+  .code-snippet {
+    justify-content: center;
+  }
+  
+  #email {
+    text-align: center;
   }
 }
 
 @media (max-width: 500px) {
+  .glitch {
+    font-size: 1.8rem; 
+    margin-top: 2rem;
+  }
+
   .course-list {
     padding: 1rem;
   }
