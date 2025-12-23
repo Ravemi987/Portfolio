@@ -4,12 +4,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio</title>
+  <title>Portfolio - Civic Engagement</title>
 
-  <!-- Lien CSS -->
   <link rel="stylesheet" href="style.css">
 
-  <!-- Google Fonts (police style informatique/cyber) -->
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
@@ -19,11 +17,11 @@
   <canvas id="particle-canvas"></canvas>
   <div id="background-glow" class="background-glow"></div>
 
-
   <div class="page-wrapper">
     <div id="navbar-placeholder"></div>
 
     <main>
+
       <header>
         <h1 class="glitch">
           <span id="typedText" data-text="Civic Engagement "></span>
@@ -31,20 +29,120 @@
         </h1>
       </header>
 
+      <section class="civic-intro-section">
+        <div class="default-text scroll-appear civic-intro-text">
+          <p>
+            At ENSEEIHT, we must complete approximately 30 hours of civic engagement ("engagement RSE" in French) before the end of the 9th semester. This engagement aims to make an engineer a responsible citizen, concerned about societal, environmental, and ethical issues of their future professional path. It can be validated in many ways. In fact, our school accepts almost every concrete or consequent project.
+          </p>
+          <hr style="border-color: rgba(255,255,255,0.1); margin: 2rem 0;">
+          <p>
+            My admission to the school in the second year of the curriculum demanded quite an important period of academic adaptation. Therefore, this engagement is not really concretized yet. However, I actively draw up ideas and plans. For instance, I will combine my passion and expertise around three potential areas of commitment, each including a social or entrepreneurial dimension, which will prepare me for the corporate environment.
+          </p>
+        </div>
+      </section>
 
-      <section id="presentation">
-        <p class="default-text scroll-appear">
-          As I arrived at ENSEEIHT at the beginning of September, I did not valide any civic engagement
-          just yet, though I have cool projects and ideas in mind.
-        </p>
 
-        <div class="socials">
-          <a href="https://github.com/Ravemi987" target="_blank" class="icon">
-            <i class="fa-brands fa-github"></i> Github
-          </a>
-          <a href="https://www.linkedin.com/in/r%C3%A9mi-airiau-6a222a256/" target="_blank" class="icon">
-            <i class="fa-brands fa-linkedin"></i> Linkedin
-          </a>
+      <div class="glow-separator"></div>
+
+
+      <section class="civic-section">
+        <div class="section-header scroll-appear">
+          <h2><i class="fas fa-chalkboard-teacher"></i> Transmission & Pedagogy</h2>
+        </div>
+
+        <div class="ppp-grid wide-grid">
+          
+          <div class="ppp-card wide glass-effect scroll-appear">
+            <div class="civic-img-container">
+                <img src="img/net7.jpg" alt="Net7 Coding" class="civic-img">
+            </div>
+            <div class="ppp-icon"><i class="fas fa-user-secret"></i></div>
+            <h3>Cybersecurity & Coding</h3>
+            <p style="text-align: justify;">
+              Interventions or small talks on domains I like or master. For example, I will soon get involved in Pony7, the cybersecurity group attached to the club Net7, the programming association of the school.
+              Often proposed by means of Hackathons, Capture The Flag (CTF) or Web Pentesting, I could bring diversity to the activities thanks to my interest in Reverse Engineering or Artificial Intelligence applied to Cybersecurity.
+            </p>
+          </div>
+
+          <div class="ppp-card wide glass-effect scroll-appear">
+            <div class="civic-img-container">
+                <img src="img/studentlife.jpg" alt="Student Life" class="civic-img">
+            </div>
+            <div class="ppp-icon"><i class="fas fa-users"></i></div>
+            <h3>Citizenship Involvement</h3>
+            <p style="text-align: justify;">
+              I would like to take part in several events for which I could represent ENSEEIHT and share my journey and my experiences. Shortly, I will participate in the school open day with the objective of answering future engineering students' questions and helping them find their own path, passing on my passion for computer science.
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <div class="glow-separator"></div>
+
+      <section class="civic-section">
+        <div class="section-header scroll-appear">
+          <h2><i class="fas fa-cogs"></i> Technical Projects</h2>
+        </div>
+
+        <div class="interviews-wrapper" id="civic">
+
+          <div class="interview-card scroll-appear">
+            <div class="interview-header">
+              <div class="shadow-avatar">
+                <i class="fas fa-rocket"></i>
+              </div>
+              <div class="interview-meta">
+                <h3>Entrepreneurial Support</h3>
+                <span class="role">Defense Sector Consulting</span>
+              </div>
+              
+              <a href="chemin/vers/attestation.pdf" target="_blank" class="attestation-btn">
+                <i class="fas fa-file-pdf"></i> Attestation
+              </a>
+            </div>
+            
+            <div class="interview-quote">
+              <p style="font-style: normal; color: var(--text-main);">
+                I helped a person starting their business in the defense sector. The goal was to secure funding and provide technical solutions. I assisted in the Call for Projects process, read the IT requirements, partly participated in the development of a first prototype for the drafting of the technical file, and created a website.
+              </p>
+            </div>
+          </div>
+
+          <div class="interview-card scroll-appear">
+            <div class="interview-header">
+              <div class="shadow-avatar">
+                <i class="fas fa-chess"></i>
+              </div>
+              <div class="interview-meta">
+                <h3>Social Impact Project</h3>
+                <span class="role">Chess Analysis Engine</span>
+              </div>
+            </div>
+            <div class="interview-quote">
+              <p style="font-style: normal; color: var(--text-main);">
+                I am currently working on a chess engine application allowing players to analyze games in real-time, with a high level of reliability. It aims to break down financial barriers, as connected DGT boards are very expensive, while improving the gaming experience. In addition, most mobile programs implementing detection show many flaws. This application could be finally delivered to clubs or YouTube influencers.
+              </p>
+            </div>
+          </div>
+
+          <div class="interview-card scroll-appear">
+            <div class="interview-header">
+              <div class="shadow-avatar">
+                <i class="fas fa-trophy"></i>
+              </div>
+              <div class="interview-meta">
+                <h3>Events Participation</h3>
+                <span class="role">BattleDev & Hackathons</span>
+              </div>
+            </div>
+            <div class="interview-quote">
+              <p style="font-style: normal; color: var(--text-main);">
+                In October, I participated in the BattleDev event, an algorithmic problem-solving competition organized by Thales. I had the opportunity to visit the company's premises and discover some of their projects involving artificial intelligence. While this activity was not strictly a civic engagement, I loved this experience and I aim to take part in more hackathons during the next semester.
+              </p>
+            </div>
+          </div>
+
         </div>
       </section>
 
