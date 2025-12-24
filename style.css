@@ -267,6 +267,10 @@ h1, h2 {
   height: 70px;
 }
 
+.navbar.glass-effect {
+  border-radius: 0px;
+}
+
 .brand-wrapper {
   display: flex;
   align-items: center;
