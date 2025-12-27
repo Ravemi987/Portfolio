@@ -3,30 +3,27 @@
   
   /* Arrière-plan */
   --bg-dark: #1e1c27;
-  --bg-overlay: rgba(26, 25, 29, 0.85); /* Pour les images de fond */
+  --bg-overlay: rgba(26, 25, 29, 0.85);
 
   /* Texte */
-  --text-main: #e1e1e1;       /* Blanc cassé pour la lecture */
-  --text-highlight: #ffffff;  /* Blanc pur pour les titres */
+  --text-main: #e1e1e1;
+  --text-highlight: #ffffff;
   
-  /* Thème Principal (Le Vert/Cyan du site) */
-  --theme-primary: #00ffbf;            /* Couleur principale */
-  --theme-primary-rgb: 0, 255, 191;    /* Version RGB pour gérer la transparence */
+  /* Thème Principal */
+  --theme-primary: #00ffbf;
+  --theme-primary-rgb: 0, 255, 191;
   
-  --theme-secondary: #00ffaa;          /* Variante légèrement plus verte (ombres) */
+  --theme-secondary: #00ffaa;
   
-  /* Accents (A utiliser avec parcimonie) */
-  --accent-cyan: #00ffff;    /* Cyan électrique (très lumineux) */
-  --accent-magenta: #ff00ff; /* Magenta (pour l'effet glitch uniquement) */
+  --accent-cyan: #00ffff;
+  --accent-magenta: #ff00ff;
   --accent-green: #75f7af;
   --accent-white: rgb(255, 255, 255);
   --accent-black: rgb(58, 56, 56);
   
-  /* UI & Verre */
   --glass-bg: rgba(255, 255, 255, 0.03);
   --glass-border: rgba(255, 255, 255, 0.1);
 
-  /* Tags Projets (Couleurs spécifiques) */
   --tag-java: #2de057;
   --tag-java-shadow: #15b85f;
   --tag-javafx: #f125e7;
@@ -123,15 +120,15 @@ body.open {
   top: 50%;
   left: 0;
   width: 100%;
-  height: 100rem; /* Hauteur exagérée pour un dégradé très doux */
+  height: 100rem;
   transform: translateY(-50%); 
   
-  /* Utilisation des variables RGB pour la transparence */
+
   background: linear-gradient(
     to bottom,
     rgba(var(--theme-primary-rgb), 0) 0%,      
     rgba(var(--theme-primary-rgb), 0.01) 15%,   
-    rgba(var(--theme-primary-rgb), 0.04) 50%,   /* Pic de lumière très subtil */
+    rgba(var(--theme-primary-rgb), 0.04) 50%,
     rgba(var(--theme-primary-rgb), 0.01) 85%,   
     rgba(var(--theme-primary-rgb), 0) 100%     
   );
@@ -160,7 +157,6 @@ main {
   background: white;
   border-radius: 2px;
   
-  /* Lueur du curseur */
   box-shadow:
     0 0 5px var(--accent-cyan),
     0 0 10px var(--theme-secondary),
@@ -212,7 +208,6 @@ h1, h2 {
   overflow-wrap: break-word;
 }
 
-/* --- BOUTONS SOCIAUX (Refactorisé) --- */
 .socials {
   display: flex;
   flex-wrap: wrap;
@@ -225,7 +220,6 @@ h1, h2 {
   text-decoration: none;
   font-size: 1.2rem;
   
-  /* État par défaut : contours verts, fond sombre légèrement teinté */
   background: rgba(var(--theme-primary-rgb), 0.05); 
   color: var(--theme-primary);
   border: 2px solid var(--theme-primary);
@@ -239,12 +233,10 @@ h1, h2 {
 }
 
 .icon:hover {
-  /* Au survol : On remplit en vert, texte sombre */
   background: var(--theme-primary);
   color: var(--bg-dark); 
   font-weight: bold;
   
-  /* Glow vert intense (plus de bleu ni magenta) */
   box-shadow: 0 0 15px var(--theme-primary), 0 0 30px var(--theme-secondary);
   
   transform: scale(1.1) rotate(-2deg);
@@ -400,9 +392,7 @@ section {
   width: 45%;
   margin-bottom: 4rem;
   padding: 1.5rem;
-  /* border: 3px solid var(--theme-primary); */
   border-radius: 8px;
-  /* box-shadow: 0 0 10px var(--theme-primary); */
 }
 
 .formation-spacer {
@@ -499,7 +489,7 @@ section {
 }
 
 .course-list.green-list h3 {
-  color: var(--accent-green); /* Peut rester spécifique ou utiliser une var accent */
+  color: var(--accent-green);
 }
 
 .course-list.blue-list h3 {
@@ -558,7 +548,7 @@ section {
   position: relative;
   flex: 1 1 300px; 
   max-width: 400px;
-  min-height: 500px;
+  min-height: 700px;
   padding: 2rem 1rem;
   margin: 0; 
   overflow: hidden;
@@ -647,6 +637,7 @@ section {
 
 .flashcard-text {
   margin: 1rem;
+  flex-grow: 1;
 }
 
 .flashcard-div p {
@@ -712,7 +703,6 @@ section {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  /* On réutilise tes variables glass-effect si elles existent, sinon voici un fallback */
   background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -738,7 +728,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(0, 255, 191, 0.1); /* Vert très léger */
+  background: rgba(0, 255, 191, 0.1);
   padding: 0.5rem 1rem;
   border-radius: 50px;
   border: 1px solid var(--theme-primary);
@@ -763,7 +753,6 @@ section {
   flex-wrap: wrap;
   max-width: 800px;
   min-width: 320px;
-  /* On fixe une hauteur minimale pour éviter les micro-sauts verticaux */
   min-height: 80px; 
   margin: 1rem 0 3rem 0;
   padding: 1rem;
@@ -774,9 +763,8 @@ section {
 }
 
 .copy-button {
-  /* On utilise une largeur fixe stricte */
   width: 180px; 
-  height: 40px; /* Fixer la hauteur aide aussi */
+  height: 40px;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -790,14 +778,12 @@ section {
   font-family: inherit;
   font-size: 14px;
   transition: all 0.2s ease;
-  /* Empêche le texte de s'étaler sur deux lignes si le mot change */
   white-space: nowrap; 
   overflow: hidden;
 }
 
 #email {
   margin: 1rem;
-  /* On fixe une largeur minimale ou on s'assure qu'il ne pousse pas le bouton */
   min-width: 200px; 
   word-break: break-all;
   text-align: center;
@@ -852,7 +838,6 @@ section {
   }
 }
 
-/* Mobile responsive */
 @media (max-width: 600px) {
   .code-snippet {
     flex-direction: column;
@@ -952,7 +937,6 @@ footer {
 
   .burger.is-open .bar:nth-child(2) { opacity: 0; }
 
-  /* Formation en mode mobile */
   #formationContent {
     display: flex;
     flex-direction: column;
@@ -1047,7 +1031,6 @@ footer {
 
 /* --- CAREER PAGE STYLES --- */
 
-/* 1. Documents Section */
 .documents-grid {
   display: flex;
   justify-content: center;
@@ -1107,11 +1090,9 @@ footer {
   box-shadow: 0 0 10px var(--theme-primary);
 }
 
-
-/* 2. Horizontal Timeline (Academic) */
 .timeline-horizontal-wrapper {
   display: flex;
-  align-items: flex-start; /* Aligne en haut */
+  align-items: flex-start;
   justify-content: space-between;
   padding: 3rem 2rem;
   margin: 2rem auto;
@@ -1154,12 +1135,11 @@ footer {
   box-shadow: none;
 }
 
-/* Lignes de connexion */
 .h-line {
-  flex: 2; /* Prend plus de place que les points */
+  flex: 2;
   height: 4px;
   background: #333;
-  margin-top: 8px; /* Ajusté pour s'aligner au centre du point (20px/2 = 10px, -2px bordure) */
+  margin-top: 8px;
   border-radius: 2px;
 }
 
@@ -1232,8 +1212,6 @@ footer {
   color: var(--theme-primary);
 }
 
-
-/* 3. Professional Paths (Grid) */
 .ppp-grid {
   display: flex;
   justify-content: center;
@@ -1261,25 +1239,24 @@ footer {
 .ppp-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-top: auto; }
 
 
-/* 4. Interviews (Vertical Stack - Full Width) */
 .interviews-wrapper {
   display: flex;
-  flex-direction: column; /* On empile les cartes verticalement */
-  align-items: center;    /* On les centre */
-  gap: 3rem;              /* Espace plus grand entre les interviews */
+  flex-direction: column; 
+  align-items: center;    
+  gap: 3rem;             
   width: 100%;
-  max-width: 900px;       /* Largeur max pour la lecture confortable */
-  margin: 0 auto;         /* Centrage du bloc global */
+  max-width: 900px;      
+  margin: 0 auto;         
 }
 
 .interview-card {
-  width: 100%;            /* Prend toute la largeur disponible */
+  width: 100%;
   padding: 0;
   border: 1px solid #333;
-  border-left: 4px solid var(--theme-primary); /* Accent sur le côté */
+  border-left: 4px solid var(--theme-primary);
   overflow: hidden;
   background: rgba(10, 10, 15, 0.6);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3); /* Légère ombre pour détacher */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   border-radius: 8px;
 }
 
@@ -1293,7 +1270,7 @@ footer {
 }
 
 .shadow-avatar {
-  flex-shrink: 0; /* Empêche l'avatar de s'écraser */
+  flex-shrink: 0;
   width: 70px;
   height: 70px;
   border-radius: 50%;
@@ -1328,7 +1305,6 @@ footer {
   margin-bottom: 0.5rem;
 }
 
-/* Nouveau style pour aligner Logo + Nom Entreprise */
 .company-row {
   display: flex;
   align-items: center;
@@ -1360,11 +1336,11 @@ footer {
 
 .interview-quote p {
   margin: 0;
-  line-height: 1.8; /* Meilleure lisibilité pour les textes longs */
+  line-height: 1.8;
   font-style: italic;
   font-size: 1rem;
-  text-align: justify; /* Texte justifié pour faire "Rapport officiel" */
-  padding-left: 2.5rem; /* Espace pour l'icône quote */
+  text-align: justify;
+  padding-left: 2.5rem;
   color: #ccc;
 }
 
@@ -1373,22 +1349,21 @@ footer {
   margin-top: 3rem;
 }
 
-/* --- MOBILE ADAPTATION FOR CAREER --- */
 @media (max-width: 768px) {
-  /* Timeline verticale sur mobile */
+
   .timeline-horizontal-wrapper {
     flex-direction: column;
     align-items: flex-start;
     gap: 0;
-    padding-left: 2rem; /* Espace pour la ligne verticale */
+    padding-left: 2rem;
   }
 
   .h-line {
     width: 4px;
-    height: 50px; /* Hauteur fixe entre les points */
+    height: 50px;
     margin: 0;
-    margin-left: 8px; /* Centré sous le point (20px/2 - 2px) */
-    flex: none; /* Annule le flex-grow */
+    margin-left: 8px;
+    flex: none;
   }
 
   .h-step {
@@ -1439,45 +1414,39 @@ footer {
 .immersive-section {
   position: relative;
   width: 100%;
-  min-height: 85vh; /* Hauteur confortable */
+  min-height: 85vh;
   display: flex;
   justify-content: center;
   align-items: center;
   
-  /* Gestion de l'image de fond */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   
-  /* Effet Parallax : l'image reste fixe au scroll (très classe sur PC) */
   background-attachment: fixed;
 }
 
-/* Images Spécifiques */
 #trumpet { background-image: url('img/trumpet.jpg'); }
 #drums   { background-image: url('img/drums.jpg'); }
 #piano   { background-image: url('img/piano.jpg'); }
 #football { background-image: url('img/football.jpg'); }
 #table-tennis { background-image: url('img/table_tennis.jpg'); }
 
-/* Le Dégradé (Gradient) pour fondre les sections entre elles */
 .immersive-overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 1;
-  /* Dégradé complexe : Noir en haut, transparent au milieu, Noir en bas */
   background: linear-gradient(
     to bottom,
     var(--bg-dark) 0%,
-    rgba(30, 28, 39, 0.4) 20%, /* Légèrement teinté */
-    rgba(30, 28, 39, 0) 50%,   /* Transparent au centre pour voir l'image */
+    rgba(30, 28, 39, 0.4) 20%,
+    rgba(30, 28, 39, 0) 50%,
     rgba(30, 28, 39, 0.4) 80%,
     var(--bg-dark) 100%
   );
 }
 
-/* --- LA CARTE "GLASS" CENTRALE --- */
 .glass-float-card {
   position: relative;
   z-index: 10;
@@ -1486,35 +1455,29 @@ footer {
   width: 90%;
   padding: 2.5rem;
   
-  /* Fond sombre et flou */
   background: rgba(15, 15, 20, 0.75); 
   backdrop-filter: blur(12px);       
   -webkit-backdrop-filter: blur(12px);
   
   border-radius: 16px;
   
-  /* ETAT INITIAL : Bordure grise fine + Barre verte à gauche */
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-left: 5px solid var(--theme-primary); 
   
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
   
   text-align: left;
-  transition: all 0.3s ease; /* Transition fluide pour tout */
+  transition: all 0.3s ease;
 }
 
-/* INTERACTION AU SURVOL */
 .glass-float-card:hover {
-  transform: translateY(-5px); /* Monte légèrement */
+  transform: translateY(-5px);
   
-  /* La bordure entière devient verte */
   border-color: var(--theme-primary);
   
-  /* Lueur verte intense (Neon Effect) */
   box-shadow: 0 0 20px rgba(0, 255, 191, 0.2), 0 15px 40px rgba(0, 0, 0, 0.6);
 }
 
-/* EN-TÊTE (Icône + Titre) */
 .card-header {
   display: flex;
   align-items: center;
@@ -1524,7 +1487,6 @@ footer {
   padding-bottom: 1rem;
 }
 
-/* L'ICÔNE (Cercle) */
 .icon-circle {
   width: 60px;
   height: 60px;
@@ -1541,12 +1503,11 @@ footer {
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Rebond élastique */
 }
 
-/* ANIMATION DE L'ICÔNE AU SURVOL DE LA CARTE */
 .glass-float-card:hover .icon-circle {
-  background: var(--theme-primary); /* Fond vert */
-  color: var(--bg-dark);            /* Icône sombre */
-  transform: scale(1.1) rotate(-10deg); /* Grossit et tourne */
-  box-shadow: 0 0 20px var(--theme-primary); /* Glow intense */
+  background: var(--theme-primary);
+  color: var(--bg-dark);
+  transform: scale(1.1) rotate(-10deg);
+  box-shadow: 0 0 20px var(--theme-primary);
   border-color: var(--theme-primary);
 }
 
@@ -1560,7 +1521,6 @@ footer {
   transition: color 0.3s ease;
 }
 
-/* Petit détail : Le titre s'illumine aussi au survol */
 .glass-float-card:hover .card-header h2 {
   color: var(--theme-primary);
   text-shadow: 0 0 10px rgba(0, 255, 191, 0.4);
@@ -1580,7 +1540,7 @@ footer {
   .immersive-section {
     background-attachment: scroll;
     min-height: auto;
-    padding: 4rem 0; /* Espace autour */
+    padding: 4rem 0;
   }
   
   .glass-float-card {
@@ -1609,17 +1569,15 @@ footer {
   justify-content: center;
 }
 
-/* Suppression des interférences visuelles (les "before") */
 .civic-section .ppp-card::before,
 .civic-section .interview-card::before {
   display: none !important;
   content: none;
 }
 
-/* Images dans les cartes */
 .civic-img-container {
   width: 100%;
-  height: 300px; /* Un peu plus haut pour l'équilibre */
+  height: 300px;
   overflow: hidden;
   border-radius: 8px;
   margin-bottom: 1.5rem;
@@ -1637,18 +1595,16 @@ footer {
   transform: scale(1.05);
 }
 
-/* MODIFICATION CLÉ : Cartes plus larges pour Transmission & Pedagogy */
 .ppp-grid.wide-grid {
-  gap: 3rem; /* Plus d'espace entre les cartes */
+  gap: 3rem;
 }
 
 .ppp-card.wide {
-  flex: 1 1 400px;  /* Base de largeur plus grande */
-  max-width: 600px; /* Largeur max augmentée (était 350px) */
+  flex: 1 1 400px;
+  max-width: 600px;
   min-width: 300px;
 }
 
-/* On s'assure que le texte "Context" ne soit pas justifié bizarrement */
 .civic-intro-text {
   max-width: 900px;
   text-align: justify;
@@ -1659,16 +1615,14 @@ footer {
   background: none;
 }
 
-/* Mobile : On garde les cartes larges mais adaptées à l'écran */
 @media (max-width: 768px) {
   .ppp-card.wide {
     max-width: 100%;
   }
 }
 
-/* --- BOUTON ATTESTATION --- */
 .attestation-btn {
-  margin-left: auto; /* C'est cette ligne qui pousse le bouton tout à droite */
+  margin-left: auto;
   text-decoration: none;
   padding: 0.4rem 0.8rem;
   border: 1px solid var(--theme-primary);
@@ -1678,8 +1632,8 @@ footer {
   font-weight: bold;
   display: flex;
   align-items: center;
-  gap: 8px; /* Espace entre l'icône et le texte */
-  white-space: nowrap; /* Empêche le texte de passer à la ligne */
+  gap: 8px;
+  white-space: nowrap;
 }
 
 .attestation-btn:hover {
@@ -1688,7 +1642,6 @@ footer {
   box-shadow: 0 0 10px var(--theme-primary);
 }
 
-/* Adaptation Mobile : Le bouton passe en dessous, centré */
 @media (max-width: 768px) {
   .attestation-btn {
     margin-left: 0;
@@ -1713,7 +1666,7 @@ footer {
   padding: 0 2rem 4rem 2rem;
   display: flex;
   flex-direction: column;
-  gap: 6rem; /* Espace aéré entre les destinations */
+  gap: 6rem;
 }
 
 .mobility-row {
@@ -1769,14 +1722,13 @@ footer {
 .mob-location {
   display: inline-block;
   font-size: 0.9rem;
-  color: var(--accent-cyan); /* Bleu cyan pour le lieu */
+  color: var(--accent-cyan);
   margin: 1rem 0;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
 
-/* Style des listes à puces "Cyber" */
 .mob-list {
   list-style: none;
   padding: 0;
@@ -1793,7 +1745,7 @@ footer {
 }
 
 .mob-list li::before {
-  content: ">"; /* Petit chevron */
+  content: ">";
   position: absolute;
   left: 0;
   color: var(--theme-primary);
@@ -1809,7 +1761,6 @@ footer {
 /* --- IMAGES --- */
 .mob-img-wrapper {
   flex: 1;
-  /* CORRECTION : On réduit la hauteur desktop à 400px (500px était trop grand) */
   height: 500px; 
   position: relative;
   border-radius: 12px;
@@ -1822,13 +1773,12 @@ footer {
 .mob-img-wrapper img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Assure que l'image remplit tout le cadre sans être déformée */
-  object-position: center; /* Centre l'image */
+  object-fit: cover;
+  object-position: center;
   transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   filter: grayscale(30%) brightness(0.8);
 }
 
-/* Hover Effects */
 .mob-img-wrapper:hover {
   transform: translateY(-5px);
   border-color: var(--theme-primary);
@@ -1868,4 +1818,279 @@ footer {
   .mob-header h2 {
     font-size: 1.6rem;
   }
+}
+
+
+.btn-detail {
+    display: inline-block;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 8px 15px;
+    border: 1px solid var(--theme-primary);
+    color: var(--theme-primary);
+    text-decoration: none;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border-radius: 4px;
+}
+
+.btn-detail:hover {
+    background: var(--theme-primary);
+    color: var(--bg-dark);
+    box-shadow: 0 0 15px var(--theme-primary);
+}
+
+.flashcard-action {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+
+/* --- INTERNSHIP SECTION STYLES --- */
+
+.internship-section {
+    padding: 60px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.case-study-container {
+    padding: 40px;
+    border: 1px solid rgba(var(--theme-primary-rgb), 0.2);
+    border-radius: 20px;
+    backdrop-filter: blur(10px); 
+}
+
+/* --- EN-TÊTE DU PROJET --- */
+.case-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.cyber-badge {
+    background: var(--theme-primary);
+    color: var(--bg-dark);
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 4px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.case-header h2 {
+    margin-top: 15px;
+    font-size: 2rem;
+}
+
+.subtitle {
+    font-family: 'Share Tech Mono', monospace;
+    color: rgba(255, 255, 255, 0.7);
+    margin-top: 5px;
+}
+
+/* --- DISPOSITION LIGNE (TEXTE + IMAGE) --- */
+.case-row {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+/* Classe pour inverser l'ordre (Image à gauche, Texte à droite) */
+.case-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.case-text {
+    flex: 1.2;
+    text-align: left;
+}
+
+.case-text h3 {
+    color: var(--theme-primary);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.case-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+/* --- CADRES D'IMAGES (DIAGRAMMES & ROBOT) --- */
+.img-frame {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px dashed var(--theme-primary);
+    border-radius: 12px;
+    height: 300px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    overflow: hidden;
+}
+
+.img-frame:hover {
+    background: rgba(var(--theme-primary-rgb), 0.08);
+    border-style: solid;
+    box-shadow: 0 0 15px rgba(var(--theme-primary-rgb), 0.1);
+}
+
+/* Gestion de l'image à l'intérieur du cadre */
+.img-frame img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.img-frame:hover img {
+    transform: scale(1.05);
+}
+
+#maze-frame {
+    background-color: white !important;
+    border-style: solid;
+}
+
+#maze-img {
+    background-color: white !important;
+    mix-blend-mode: multiply;
+}
+
+#maze-frame:hover {
+    background-color: #f0f0f0 !important;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+
+.invert-colors {
+    filter: invert(1) hue-rotate(180deg) brightness(1.2);
+}
+
+.case-challenges {
+    margin: 40px 0;
+    padding: 25px;
+    border-left: 4px solid var(--theme-primary);
+    background: rgba(var(--theme-primary-rgb), 0.05);
+    border-radius: 0 12px 12px 0;
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* --- GALERIE DASHBOARD (CAPTURES D'ÉCRAN) --- */
+.case-app-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 40px;
+    align-items: center;
+}
+
+.app-img-wrapper {
+    width: 100%;
+    max-width: 850px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--bg-dark);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.app-img-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(0.9);
+    transition: 0.3s;
+}
+
+.app-img-wrapper:hover img {
+    filter: brightness(1);
+}
+
+.img-caption {
+    padding: 12px;
+    font-size: 0.9rem;
+    color: var(--theme-primary);
+    text-align: center;
+    font-family: 'Share Tech Mono', monospace;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.resources-box {
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.resources-box h3 {
+    margin-bottom: 25px;
+    color: white;
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.res-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.res-card i {
+    font-size: 1.8rem;
+    color: var(--theme-primary);
+    transition: 0.3s;
+}
+
+.res-card span {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.res-card:hover {
+    border-color: var(--theme-primary);
+    transform: translateY(-5px);
+    background: rgba(var(--theme-primary-rgb), 0.1);
+    color: white;
+}
+
+.res-card.primary {
+    border: 1px solid var(--theme-primary);
+    box-shadow: 0 0 15px rgba(var(--theme-primary-rgb), 0.1);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media (max-width: 900px) {
+    .case-row, .case-row.reverse {
+        flex-direction: column;
+    }
+    
+    .case-text, .case-image {
+        width: 100%;
+    }
+
+    .img-frame {
+        height: auto;
+        min-height: 200px;
+    }
 }

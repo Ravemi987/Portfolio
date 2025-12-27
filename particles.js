@@ -45,7 +45,7 @@ function createParticles() {
 function animate(t) {
   maskCtx.clearRect(0, 0, width, height);
 
-  // Déplacement fluide des particules
+  // Déplacement des particules
   particles.forEach(p => {
     p.x = p.baseX + Math.sin(t * 0.002 + p.offsetX) * 8;
     p.y = p.baseY + Math.cos(t * 0.002 + p.offsetY) * 8;
@@ -93,13 +93,11 @@ function animate(t) {
     // Dessin complet des particules et lignes depuis le maskCanvas
     ctx.drawImage(maskCanvas, 0, 0);
 
-    // Gradient radial : blanc au centre, noir à l'extérieur pour "masquer" progressivement
     const gradient = ctx.createRadialGradient(glowPos.x, glowPos.y, 0, glowPos.x, glowPos.y, glowRadius);
-    gradient.addColorStop(0, 'rgba(0,0,0,0.3)');   // au centre, opaque → tout visible
-    gradient.addColorStop(0.7, 'rgba(0,0,0,0.1)');   // au centre, opaque → tout visible
-    gradient.addColorStop(1, 'rgba(0,0,0,0)');   // à la limite, transparent → invisible
+    gradient.addColorStop(0, 'rgba(0,0,0,0.3)');
+    gradient.addColorStop(0.7, 'rgba(0,0,0,0.1)');
+    gradient.addColorStop(1, 'rgba(0,0,0,0)');
 
-    // On applique le gradient comme masque
     ctx.globalCompositeOperation = 'destination-in';
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);

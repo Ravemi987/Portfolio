@@ -195,6 +195,9 @@
                 </p>
                 <p>The application also gives an analysis through multiples charts, graphics, tables, leaderboards.</p>
               </div>
+              <div class="flashcard-action">
+                <a href="#irit-internship" class="btn-detail">View Project</a>
+            </div>
               <div class="flashcard-tags-div">
                 <span class="flashcard-tag tag-r">R</span>
                 <span class="flashcard-tag tag-css">CSS</span>
@@ -207,7 +210,7 @@
               </div>
               <h2>Processor Conception</h2>
               <div class="flashcard-text">
-                <p>Conception of a fonctional processor for ARMv7 (32 bits)</p>
+                <p>Conception of a fonctional processor for ARMv7 (32 bits).</p>
                 <p>Wiring in Logisim. Implementation of every component and mecanism from scratch:</p>
                 <p>UAL - Register file - Instruction Decoder and management of NZCV flags, memory, program counter.</p>
                 <p>Correct execution of basic instructions (MOV, ADD, SUB, LOAD, STORE, ...)</p>
@@ -238,6 +241,92 @@
           </div>
 
         </div>
+      </section>
+
+      <div class="glow-separator"></div>
+
+      <section id="irit-internship" class="internship-section scroll-appear">
+          <div class="case-study-container glass-effect">
+              
+              <div class="case-header">
+                  <span class="cyber-badge">FEATURED PROJECT</span>
+                  <h2 class="glitch" data-text="Internship @ IRIT Lab">> Internship: Study of Honeybee Decision-Making</h2>
+                  <p class="subtitle">Reinforcement Learning & Multi-Armed Bandit</p>
+              </div>
+
+              <div class="case-row">
+                  <div class="case-text">
+                      <h3><i class="fa-solid fa-microscope"></i> Intro</h3>
+                      <p>My L3 internship at <strong>IRIT</strong> (Institut de Recherche en Informatique de Toulouse) focused on studying the honeybee decision-making process through <strong>Reinforcement Learning</strong> algorithms, specifically Multi-Armed Bandit (MAB) models.</p>
+                      <p>The objective was to provide a web-based dashboard application for the <em>Center in Integrative Biology</em> to visualize data and analyze how bees solve sequential learning problems compared to optimal AI strategies.</p>
+                  </div>
+                  <div class="case-image">
+                      <div class="img-frame">
+                          <img src="img/Reinforcement_learning_diagram_fr.svg.png" class="invert-colors" alt="Reinforcement Learning Diagram">
+                      </div>
+                  </div>
+              </div>
+
+              <div class="case-row reverse">
+                  <div class="case-text">
+                      <h3><i class="fa-solid fa-route"></i> The MAB Problem</h3>
+                      <p>In the Multi-Armed Bandit problem, an agent must iteratively select actions to maximize rewards while minimizing "regret". This involves a constant balance between <strong>Exploration</strong> (testing new options) and <strong>Exploitation</strong> (choosing the best-known option).</p>
+                      <p>For this project, bees enter a <strong>Y-maze</strong> and land on visual stimuli. Depending on their choice, they receive a reward (sugar) or a punishment (bitter substance).</p>
+                  </div>
+                  <div class="case-image">
+                      <div class="img-frame" id="maze-frame">
+                          <img src="img/Maze-correct.png" id="maze-img" alt="Y-Maze Experimental Setup">
+                      </div>
+                  </div>
+              </div>
+
+              <div class="case-row">
+                  <div class="case-text">
+                      <h3><i class="fa-solid fa-code"></i> Technical Realization</h3>
+                      <p>I developed an interactive dashboard using <strong>R and CSS</strong>. It supports data processing and provides advanced visualizations (pie charts, line charts, boxplots) to track reward and regret metrics.</p>
+                      <p>I implemented <strong>Kullback-Leibler divergence</strong> and <strong>Wasserstein distance</strong> metrics to provide intuition into the probabilistic strategies adopted by individual bees.</p>
+                  </div>
+              </div>
+
+              <div class="case-challenges glass-effect">
+                  <p><i class="fa-solid fa-triangle-exclamation" style="color: var(--theme-primary);"></i> 
+                    <strong>Challenges & Learning:</strong> Throughout this project, I withstood many difficulties. I had to study the mathematical concepts of Reinforcement Learning, learn the R programming language and understand the biological experiment behind the collected data.
+                  </p>
+              </div>
+
+              <div class="case-app-showcase">
+                  <div class="app-img-wrapper">
+                      <img src="img/dashboard.png" alt="Dashboard Analysis 1">
+                      <p class="img-caption">Dashboard: Behavioral data visualization</p>
+                  </div>
+                  <div class="app-img-wrapper">
+                      <img src="img/individual.png" alt="Dashboard Analysis 2">
+                      <p class="img-caption">Comparative analysis: MAB Models vs Honeybees</p>
+                  </div>
+              </div>
+
+              <div class="resources-box">
+                  <h3><i class="fa-solid fa-folder-open"></i> Project Resources & Documents</h3>
+                  <div class="resources-grid">
+                      <a href="docs/Stage_Remi_Airiau_Rapport.pdf" class="res-card">
+                          <i class="fa-solid fa-file-pdf"></i>
+                          <span>Technical Report (FR)</span>
+                      </a>
+                      <a href="docs/Stage_Remi_Airiau_English.pdf" class="res-card">
+                          <i class="fa-solid fa-language"></i>
+                          <span>English Report</span>
+                      </a>
+                      <a href="docs/Stage_Remi_Airiau_Diapo.pdf" class="res-card">
+                          <i class="fa-solid fa-display"></i>
+                          <span>Project Presentation</span>
+                      </a>
+                      <a href="docs/Buzz__Choose__Forget__A_Meta_Bandit_Framework_for_Bee_Like_Decision_Making .pdf" class="res-card primary">
+                          <i class="fa-solid fa-newspaper"></i>
+                          <span>Research Paper</span>
+                      </a>
+                  </div>
+              </div>
+          </div>
       </section>
 
     </main>

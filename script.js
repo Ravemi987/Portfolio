@@ -53,14 +53,11 @@ function setupMobileMenu() {
 }
 
 // --- Animation Scroll (Intersection Observer) ---
-// Beaucoup plus performant que window.addEventListener('scroll')
 function initScrollAnimations() {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        // Optionnel: arrêter d'observer une fois apparu pour économiser des ressources
-        // observer.unobserve(entry.target); 
       }
     });
   }, { threshold: 0.1 }); // Se déclenche quand 10% de l'élément est visible
